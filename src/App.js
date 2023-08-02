@@ -1,7 +1,7 @@
 import React from "react";
 
 const App = () => {
-  return <div>this is app.js</div>;
+  return <div>Now, we are in LEAR-5</div>;
 };
 
 export default App;
