@@ -1,7 +1,12 @@
 import React from "react";
+import Home from "./pages/Home/Home";
 
 const App = () => {
-  return <div>Now, we are in LEAR-5</div>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
 
 export default App;
