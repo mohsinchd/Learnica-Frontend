@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 const FormComponent = ({ isSignUp }) => {
   const [formData, setFormData] = useState({
@@ -24,46 +24,62 @@ const FormComponent = ({ isSignUp }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      {isSignUp && (
-        <Form.Group controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </Form.Group>
-      )}
+    <Container className=" mt-5">
+      <Row>
+        <Col>
+          <Form
+            onSubmit={handleSubmit}
+            className="p-5 shadow-sm bg-white"
+            style={{ borderRadius: "15px" }}
+          >
+            {isSignUp && (
+              <Form.Group controlId="formName " className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter your name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            )}
 
-      <Form.Group controlId="formEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </Form.Group>
+            <Form.Group controlId="formEmail" className="mb-3">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-      </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-      <Button variant="primary" type="submit" className="mt-3">
-        {isSignUp ? "Sign Up" : "Login"}
-      </Button>
-    </Form>
+            <Button variant="primary" type="submit" className="mt-3">
+              {isSignUp ? "Sign Up" : "Login"}
+            </Button>
+
+            {!isSignUp && (
+              <div className="forgot-password mt-2">
+                <a href="#">Forget Password</a>
+              </div>
+            )}
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

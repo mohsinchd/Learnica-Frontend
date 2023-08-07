@@ -1,15 +1,18 @@
+body {
+  background-color: #f2f2f2;
+}
 .image-container {
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
-.home-carousel-container {
+/* .home-carousel-container {
   width: 100%;
-}
+} */
 
 .carousel-image {
   width: 100%;
-  height: 500px; /* Set the desired height here */
+  height: 450px; /* Set the desired height here */
   object-fit: cover;
   /* filter: brightness(30%); */
 }
@@ -81,3 +84,11 @@ a {
   color: #fff; /* Set the desired color for the active link */
   text-decoration: underline; /* Add underline to the active link if desired */
 }
+
+.notFound-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form css */

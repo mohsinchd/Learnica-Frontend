@@ -1,20 +1,34 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="mt-5 bg-dark text-light p-5 footer">
+    <footer className="mt-5 bg-dark text-light p-5 footer ">
       <Container>
         <Row>
           <Col md={6}>
-            <h3>About LEARNICA </h3>
+            <h3>LEARNICA </h3>
             <p>Learnica is the best place for the online Learning Platform</p>
           </Col>
           <Col md={3}>
             <h2>Links</h2>
             <ul className="list-unstyled  mb-0 ">
-              <li>
-                <a href="">Home</a>
-              </li>
+              <Link to="/">
+                <li>
+                  <a href="">Home</a>
+                </li>
+              </Link>
+              <Link to="/Login">
+                <li>
+                  <a href="">Login</a>
+                </li>
+              </Link>
+              <Link to="/Login">
+                <li>
+                  <a href="">Register</a>
+                </li>
+              </Link>
+
               <li>
                 <a href="">About</a>
               </li>

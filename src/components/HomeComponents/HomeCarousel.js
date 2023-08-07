@@ -3,6 +3,7 @@ import ImageCarousel from "./ImageCarousel";
 import Container from "react-bootstrap/Container";
 import laptop from "../../Images/laptop.jpg";
 import pcBoy from "../../Images/pcBoy.jpg";
+import laptopattable from "../../Images/laptoattable.jpg";
 const HomeCarousel = () => {
   return (
     <Container fluid className="pt-5 mt-2 mx-0 px-0 home-carousel-container">
@@ -10,8 +11,21 @@ const HomeCarousel = () => {
         <Carousel.Item>
           <ImageCarousel text="laptop image" imagePath={pcBoy} />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>secure you saving with Great Future</h3>
+            <p>
+              Millions of people join our platform , invest you short time and
+              make a large deal of future{" "}
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <ImageCarousel text="laptop image " imagePath={laptopattable} />
+          <Carousel.Caption>
+            <h3>secure you saving with Great Future</h3>
+            <p>
+              Millions of people join our platform , invest you short time and
+              make a large deal of future{" "}
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
