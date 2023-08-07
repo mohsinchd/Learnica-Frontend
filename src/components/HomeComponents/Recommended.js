@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { cardData } from "../CourseData/recoData";
+import { cardData } from "../../CourseData/recoData";
 import DisplayCardView from "./DisplayCardView";
 
 const Recommended = () => {

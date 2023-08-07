@@ -1,8 +1,8 @@
 import Carousel from "react-bootstrap/Carousel";
 import ImageCarousel from "./ImageCarousel";
 import Container from "react-bootstrap/Container";
-import laptop from "../Images/laptop.jpg";
-import pcBoy from "../Images/pcBoy.jpg";
+import laptop from "../../Images/laptop.jpg";
+import pcBoy from "../../Images/pcBoy.jpg";
 const HomeCarousel = () => {
   return (
     <Container fluid className="pt-5 mt-2 mx-0 px-0 home-carousel-container">

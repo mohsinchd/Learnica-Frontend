@@ -1,5 +1,5 @@
 import React from "react";
-import FormComponent from "../components/FormComponent";
+import FormComponent from "../../components/AuthComponents/FormComponent";
 const Register = () => {
   return (
     <div>

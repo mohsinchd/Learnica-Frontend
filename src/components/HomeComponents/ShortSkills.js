@@ -1,5 +1,5 @@
 import React from "react";
-import { short } from "../CourseData/short";
+import { short } from "../../CourseData/short";
 import DisplayCardView from "./DisplayCardView";
 const ShortSkills = () => {
   return (

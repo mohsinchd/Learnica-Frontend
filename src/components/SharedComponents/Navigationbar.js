@@ -6,8 +6,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Modal from "react-bootstrap/Modal";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import Login from "../../pages/Auth/Login";
+import Register from "../../pages/Auth/Register";
 const Navigationbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setRegisterModal] = useState(false);
