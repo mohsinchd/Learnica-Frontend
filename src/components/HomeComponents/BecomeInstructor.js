@@ -9,7 +9,7 @@ const BecomeInstructor = () => {
           md={6}
           className="d-flex flex-column justify-content-center align-items-center p-5 text-center"
         >
-          <h1>Embrace the Positin of Mentor</h1>
+          <h1>Embrace the position of Mentor</h1>
           <p style={{ lineHeight: "2" }}>
             Millions of students on Learnica are guided by instructors
             worldwide, as we equip them with the necessary tools and knowledge

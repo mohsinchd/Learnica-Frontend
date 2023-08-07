@@ -1,17 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Modal from "react-bootstrap/Modal";
-import Login from "../../pages/Auth/Login";
-import Register from "../../pages/Auth/Register";
-const Navigationbar = () => {
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showRegisterModal, setRegisterModal] = useState(false);
-
+import { Link } from "react-router-dom";
+const Navigationbar = (event) => {
   return (
     <>
       <Navbar
@@ -22,15 +17,17 @@ const Navigationbar = () => {
         fixed="top"
       >
         <Container>
-          <Navbar.Brand href="#">LEARNICA</Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand href="#">LEARNICA</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
               // navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">our Business</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/Login">Instruct </Nav.Link>
               <NavDropdown
                 title="categories"
                 id="navbarScrollingDropdown"
@@ -50,51 +47,15 @@ const Navigationbar = () => {
               <Button variant="outline-success">Search</Button>
             </Form>
 
-            <Button
-              variant="outline-success me-2"
-              onClick={() => setShowLoginModal(true)}
-            >
-              Login
-            </Button>
-            <Button
-              variant="outline-success"
-              onClick={() => setRegisterModal(true)}
-            >
-              Register
-            </Button>
+            <Link to="/Login">
+              <Button variant="outline-success me-2">Login</Button>
+            </Link>
+            <Link to="/Register">
+              <Button variant="outline-success">Register</Button>{" "}
+            </Link>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/* Modal for the Login  */}
-      <Modal show={showLoginModal} onHide={() => setShowLoginModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Login />
-        </Modal.Body>
-        {/* Modal Footer */}
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowLoginModal(false)}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      {/* Modal for the Register */}
-      <Modal show={showRegisterModal} onHide={() => setRegisterModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Register />
-        </Modal.Body>
-        {/* Modal Footer */}
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setRegisterModal(false)}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </>
   );
 };

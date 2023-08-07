@@ -9,7 +9,7 @@ export const short = [
     imageUrl: pcBoy,
     title: "Web Development",
     content:
-      "Course having main three parts html, css and javascript in only one course. By doing the course, you are able to make all types of websites.",
+      "Course having main three parts html, css and javascript in only one course. By doing the course, you are able to make all types of websites.Our Course is superd !",
   },
   {
     imageUrl: javascript2,
