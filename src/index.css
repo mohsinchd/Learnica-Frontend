@@ -57,3 +57,27 @@ a {
 .carousel-control-prev {
   left: 8%;
 }
+/* instructor  */
+.inst-img {
+  height: auto; /* Set height to auto to maintain aspect ratio */
+  max-width: 100%; /* Scale the image within its container */
+  border-radius: 2%;
+  object-fit: cover;
+}
+/* Footer  */
+/* Set the default link color to light gray (or any other color you prefer) */
+.footer a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* Change link color on hover */
+.footer a:hover {
+  color: #fff; /* Set the desired color for the links on hover */
+}
+
+/* Add style for active link (optional) */
+.footer a.active {
+  color: #fff; /* Set the desired color for the active link */
+  text-decoration: underline; /* Add underline to the active link if desired */
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 const Footer = () => {
   return (
-    <footer className="mt-5 bg-dark text-light p-5">
+    <footer className="mt-5 bg-dark text-light p-5 footer">
       <Container>
         <Row>
           <Col md={6}>
@@ -11,7 +11,7 @@ const Footer = () => {
           </Col>
           <Col md={3}>
             <h2>Links</h2>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled  mb-0 ">
               <li>
                 <a href="">Home</a>
               </li>
@@ -23,7 +23,7 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={3}>
+          <Col md={3} className="mt-3 mt-lg-0">
             <h3>Contact Us</h3>
             <p>Email: shahzaib6915....</p>
             <p>Phone: 0300 11129...</p>

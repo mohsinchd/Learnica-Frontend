@@ -12,13 +12,6 @@ const Navigationbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setRegisterModal] = useState(false);
 
-  const handleLoginClick = () => {
-    setShowLoginModal(true);
-  };
-
-  const handleCloseLoginModal = () => {
-    setShowLoginModal(false);
-  };
   return (
     <>
       <Navbar
@@ -34,19 +27,20 @@ const Navigationbar = () => {
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
+              // navbarScroll
             >
               <Nav.Link href="#action1">Home</Nav.Link>
               <Nav.Link href="#action2">our Business</Nav.Link>
+              <NavDropdown
+                title="categories"
+                id="navbarScrollingDropdown"
+                className="categories-heading"
+              >
+                <NavDropdown.Item href="#action3">Development</NavDropdown.Item>
+                <NavDropdown.Item href="#action4">Design</NavDropdown.Item>
+                <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
-            <NavDropdown title="categories" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Development</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Design</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
-            </NavDropdown>
-
             <Form className="d-flex mx-lg-3 me-5 my-xs-4 my-lg-0">
               <Form.Control
                 type="search"
