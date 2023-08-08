@@ -23,10 +23,7 @@ const DisplayCardView = ({ cardData, children }) => {
                   <Card.Body>
                     <Card.Title>{card.title}</Card.Title>
                     <Card.Text>{card.content}</Card.Text>
-                    <Button
-                      variant="outline-success"
-                      className=" text-uppercase mb-1"
-                    >
+                    <Button variant="success" className=" text-uppercase mb-1">
                       Enroll
                     </Button>
                   </Card.Body>
