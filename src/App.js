@@ -3,9 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigationbar from "./components/SharedComponents/Navigationbar";
 import Footer from "./components/SharedComponents/Footer";
 import Home from "./pages/Home/Home";
-import NotFound from "./components/NofFound";
+import NotFound from "./components/SharedComponents/NofFound";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+
 const App = () => {
   return (
     <BrowserRouter>

@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: #f2f2f2;
-}
+} */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -36,6 +36,10 @@ body {
 /* footer */
 a {
   text-decoration: none;
+}
+
+.search-input::placeholder {
+  color: #000 !important; /* Change the color to your desired value */
 }
 
 .carousel-control-prev-icon,
@@ -92,6 +96,18 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Utilis */
+.pointer {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .authWidth {
+    width: 100% !important;
+    padding: 20px;
+  }
 }
 
 /* Form css */
