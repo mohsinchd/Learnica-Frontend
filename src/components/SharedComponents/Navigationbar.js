@@ -6,6 +6,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import { SiSololearn } from "react-icons/si";
+
 const Navigationbar = (event) => {
   return (
     <>
@@ -20,7 +22,9 @@ const Navigationbar = (event) => {
       >
         <Container>
           <Link to="/">
-            <Navbar.Brand href="#">LEARNICA</Navbar.Brand>
+            <Navbar.Brand>
+              <SiSololearn size={25} className="text-success" /> LEARNICA
+            </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -28,8 +32,6 @@ const Navigationbar = (event) => {
               className="me-auto my-2 my-lg-0"
               // navbarScroll
             >
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/Login">Instruct </Nav.Link>
               <NavDropdown
                 title="categories"
                 id="navbarScrollingDropdown"
@@ -40,20 +42,27 @@ const Navigationbar = (event) => {
                 <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form className="d-flex mx-lg-3 me-5 my-xs-4 my-lg-0">
+            <Form className="d-flex me-2 mb-2">
               <Form.Control
+                className="text-dark search-input"
                 type="search"
+                size="sm"
                 placeholder="Search"
-                aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outline-success" size="sm">
+                Search
+              </Button>
             </Form>
 
             <Link to="/Login">
-              <Button variant="outline-success me-2">Login</Button>
+              <Button variant="outline-success me-2 mb-2" size="sm">
+                Login
+              </Button>
             </Link>
             <Link to="/Register">
-              <Button variant="outline-success">Register</Button>{" "}
+              <Button variant="outline-success mb-2" size="sm">
+                Register
+              </Button>{" "}
             </Link>
           </Navbar.Collapse>
         </Container>

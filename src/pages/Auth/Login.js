@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, InputGroup } from "react-bootstrap";
+import { AiFillEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +9,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +24,8 @@ const Login = () => {
 
   return (
     <div style={{ paddingTop: "150px" }}>
-      <Container>
-        <h3 className="text-center mb-3">Login & Make you Future</h3>
+      <Container className="w-50 authWidth">
+        <h1 className=" mb-3">Sign In</h1>
         <Row>
           <Col>
             <Form
@@ -42,13 +46,21 @@ const Login = () => {
 
               <Form.Group controlId="formPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
+                <InputGroup>
+                  <Form.Control
+                    type={`${showPassword ? "text" : "password"}`}
+                    placeholder="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                  <InputGroup.Text
+                    className="bg-dark text-light pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    <AiFillEye size={20} />
+                  </InputGroup.Text>
+                </InputGroup>
               </Form.Group>
 
               <Button variant="success" type="submit" className="mt-3">
@@ -57,9 +69,12 @@ const Login = () => {
               <div className="forgot-password mt-2">
                 <p>
                   You Have No Account ?
-                  <a href="/Register" style={{ marginLeft: "15px" }}>
+                  <Link to="/Register" style={{ marginLeft: "15px" }}>
                     Register
-                  </a>
+                  </Link>
+                </p>
+                <p>
+                  <Link to="/forgot-password"> Forgot Password?</Link>
                 </p>
               </div>
             </Form>
