@@ -67,7 +67,7 @@ const FormComponent = ({ isSignUp }) => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="mt-3">
+            <Button variant="success" type="submit" className="mt-3">
               {isSignUp ? "Sign Up" : "Login"}
             </Button>
 
