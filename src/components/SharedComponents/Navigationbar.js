@@ -15,6 +15,8 @@ const Navigationbar = (event) => {
         data-bs-theme="dark"
         expand="lg"
         fixed="top"
+        navbar="dark"
+        className="text-info"
       >
         <Container>
           <Link to="/">

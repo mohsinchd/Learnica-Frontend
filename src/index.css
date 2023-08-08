@@ -1,14 +1,17 @@
 body {
   background-color: #f2f2f2;
 }
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
 .image-container {
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
-/* .home-carousel-container {
-  width: 100%;
-} */
 
 .carousel-image {
   width: 100%;

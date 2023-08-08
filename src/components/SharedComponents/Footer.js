@@ -23,9 +23,9 @@ const Footer = () => {
                   <a href="">Login</a>
                 </li>
               </Link>
-              <Link to="/Login">
+              <Link to="/Register">
                 <li>
-                  <a href="">Register</a>
+                  <a href="/Register">Register</a>
                 </li>
               </Link>
 
