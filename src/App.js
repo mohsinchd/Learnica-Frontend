@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Navigationbar from "./components/SharedComponents/Navigationbar";
 import Footer from "./components/SharedComponents/Footer";
 import Home from "./pages/Home/Home";
@@ -23,6 +24,7 @@ const App = () => {
         </main>
       </div>
       <Footer />
+      <Toaster />
     </BrowserRouter>
   );
 };
