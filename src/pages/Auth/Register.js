@@ -92,7 +92,7 @@ const Register = () => {
 
   return (
     <>
-      <div style={{ paddingTop: "150px" }}>
+      <div style={{ marginTop: "150px" }}>
         {isLoading ? (
           <Loader />
         ) : (
@@ -100,11 +100,7 @@ const Register = () => {
             <Row>
               <h1 className="text-center">Sign Up</h1>
               <Col>
-                <Form
-                  onSubmit={handleSubmit}
-                  className=""
-                  style={{ borderRadius: "15px" }}
-                >
+                <Form onSubmit={handleSubmit} style={{ borderRadius: "15px" }}>
                   <Avatar src={imagePrev} alt={"Error"} />
                   <Form.Group>
                     <Form.Label>Name</Form.Label>

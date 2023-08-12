@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa"; // Import the user circle icon
 const Avatar = ({ src, alt }) => {
   if (src) {
     return (
-      <div className="d-flex justify-content-center my-4">
+      <div className="d-flex  justify-content-center my-4">
         <Image
           src={src}
           alt={alt}

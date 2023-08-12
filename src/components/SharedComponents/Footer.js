@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SiSololearn } from "react-icons/si";
 const Footer = () => {
   return (
-    <footer className="mt-5 bg-dark text-light p-5 footer ">
+    <footer className=" mt-5 p-5 bg-dark text-light  footer ">
       <Container>
         <Row>
           <Col md={6}>
