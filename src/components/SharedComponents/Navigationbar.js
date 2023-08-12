@@ -5,14 +5,12 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
 import { SiSololearn } from "react-icons/si";
-
 import { useSelector, useDispatch } from "react-redux";
-
-import { logout, reset } from "../../redux/reducers/auth/authSlice";
+import { reset } from "../../redux/reducers/auth/authSlice";
 import { toast } from "react-hot-toast";
-
+import { NavLink } from "react-router-dom";
+import UserProfileDropdown from "./UserProfileDropDown";
 const Navigationbar = () => {
   const { user, logoutMessage } = useSelector((state) => state.auth);
 
@@ -38,11 +36,11 @@ const Navigationbar = () => {
         className="text-info"
       >
         <Container>
-          <Link to="/">
+          <NavLink to="/">
             <Navbar.Brand>
               <SiSololearn size={25} className="text-success" /> LEARNICA
             </Navbar.Brand>
-          </Link>
+          </NavLink>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -59,7 +57,7 @@ const Navigationbar = () => {
                 <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form className="d-flex me-2 mb-2">
+            <Form className="d-flex me-5 mb-2">
               <Form.Control
                 className="text-dark search-input"
                 type="search"
@@ -72,25 +70,19 @@ const Navigationbar = () => {
             </Form>
 
             {user ? (
-              <Button
-                onClick={() => dispatch(logout())}
-                variant="outline-success mb-2"
-                size="sm"
-              >
-                Logout
-              </Button>
+              <UserProfileDropdown />
             ) : (
               <>
-                <Link to="/Login">
+                <NavLink to="/Login">
                   <Button variant="outline-success me-2 mb-2" size="sm">
                     Login
                   </Button>
-                </Link>
-                <Link to="/Register">
+                </NavLink>
+                <NavLink to="/Register">
                   <Button variant="outline-success mb-2" size="sm">
                     Register
                   </Button>{" "}
-                </Link>
+                </NavLink>
               </>
             )}
           </Navbar.Collapse>
