@@ -1,12 +1,18 @@
 import axios from "axios";
 
+export const API_URL = "https://learnica-backend-production.up.railway.app";
+
 // Register User
 const registerUser = async (userData) => {
-  const { data } = await axios.post(`/api/v1/user/register`, userData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const { data } = await axios.post(
+    `${API_URL}/api/v1/user/register`,
+    userData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
 
   if (data.user) {
     localStorage.setItem("user", JSON.stringify(data.user));
@@ -17,7 +23,7 @@ const registerUser = async (userData) => {
 
 // Logout User
 const logoutUser = async () => {
-  const { data } = await axios.get("/api/v1/user/logout");
+  const { data } = await axios.get(`${API_URL}/api/v1/user/logout`);
 
   localStorage.removeItem("user");
 
@@ -26,7 +32,7 @@ const logoutUser = async () => {
 
 // Login User
 const loginUser = async (userData) => {
-  const { data } = await axios.post("/api/v1/user/login", userData, {
+  const { data } = await axios.post(`${API_URL}/api/v1/user/login`, userData, {
     headers: {
       "Content-Type": "application/json",
     },
