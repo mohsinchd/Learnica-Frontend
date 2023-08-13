@@ -20,6 +20,22 @@ const UserProfileDropdown = ({ user }) => {
         size="sm"
         style={{ borderRadius: "500px" }}
       >
+        <Dropdown.Item>
+          <div className="d-flex align-items-center">
+            <img
+              src={user.avatar.url}
+              alt="Error"
+              className="img-fluid rounded-circle mb-2 me-2"
+              style={{
+                width: 50,
+                height: 50,
+              }}
+            />
+            <p className="text-light fw-bold">{user.name}</p>
+          </div>
+          <p className="text-light">{user.email}</p>
+        </Dropdown.Item>
+        <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/edit-profile")}>
           Edit Profile
         </Dropdown.Item>
