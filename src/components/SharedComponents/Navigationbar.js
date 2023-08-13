@@ -10,7 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../../redux/reducers/auth/authSlice";
 import { toast } from "react-hot-toast";
 import { NavLink } from "react-router-dom";
-import UserProfileDropdown from "./UserProfileDropDown";
+import UserProfileDropdown from "../AuthComponents/UserProfileDropdown";
+
 const Navigationbar = () => {
   const { user, logoutMessage } = useSelector((state) => state.auth);
 
