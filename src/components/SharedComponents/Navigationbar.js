@@ -58,7 +58,7 @@ const Navigationbar = () => {
                 <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form className="d-flex me-5 mb-2">
+            <Form className="d-flex me-2 mb-2">
               <Form.Control
                 className="text-dark search-input"
                 type="search"
@@ -71,7 +71,7 @@ const Navigationbar = () => {
             </Form>
 
             {user ? (
-              <UserProfileDropdown />
+              <UserProfileDropdown user={user} />
             ) : (
               <>
                 <NavLink to="/Login">
