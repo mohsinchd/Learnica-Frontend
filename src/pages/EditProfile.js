@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Avatar from "../components/SharedComponents/Avatar";
 import Sidebar from "../components/EditProfile/Sidebar";
-import BasicInfo from "../components/EditProfile/BasicInfo";
-import PasswordChange from "../components/EditProfile/PasswordChange";
+
 import { Outlet } from "react-router";
 const EditProfile = () => {
   return (

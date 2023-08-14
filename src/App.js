@@ -8,6 +8,7 @@ import EditProfile from "./pages/EditProfile";
 import NotFound from "./components/SharedComponents/NofFound";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+import Reset from "./pages/Auth/Reset";
 import BasicInfo from "./components/EditProfile/BasicInfo";
 import PasswordChange from "./components/EditProfile/PasswordChange";
 import Enrollment from "./components/EditProfile/Enrollment";
@@ -22,6 +23,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="/forget-password" element={<Reset />} />
             <Route path="/edit-profile" element={<EditProfile />}>
               <Route
                 index
