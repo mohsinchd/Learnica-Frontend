@@ -62,7 +62,7 @@ const Login = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Container className="w-50 authWidth">
+        <Container className="w-50 authWidth shadow p-5  rounded ">
           <h1 className=" mb-3">Sign In</h1>
           <Row>
             <Col>
@@ -112,7 +112,7 @@ const Login = () => {
                     </Link>
                   </p>
                   <p>
-                    <Link to="/forgot-password"> Forgot Password?</Link>
+                    <Link to="/forget-password"> Forgot Password?</Link>
                   </p>
                 </div>
               </Form>
