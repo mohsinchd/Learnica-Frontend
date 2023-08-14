@@ -45,10 +45,44 @@ const loginUser = async (userData) => {
   return data;
 };
 
+// Forgot Password
+const forgot = async (userEmail) => {
+  const { data } = await axios.post(
+    `${API_URL}/api/v1/user/forgotPassword`,
+    userEmail,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return data;
+};
+
+// Reset
+const reset = async (token, newPassword) => {
+  const { data } = await axios.put(
+    `${API_URL}/api/v1/user/resetPassword/${token}`,
+    { newPassword },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  console.log(data);
+
+  return data;
+};
+
 const authService = {
   registerUser,
   logoutUser,
   loginUser,
+  forgot,
+  reset,
 };
 
 export default authService;
