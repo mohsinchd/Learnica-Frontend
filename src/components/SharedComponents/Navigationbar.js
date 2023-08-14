@@ -11,9 +11,10 @@ import { reset } from "../../redux/reducers/auth/authSlice";
 import { toast } from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 import UserProfileDropdown from "../AuthComponents/UserProfileDropdown";
+import Loader from "./Loader";
 
 const Navigationbar = () => {
-  const { user, logoutMessage } = useSelector((state) => state.auth);
+  const { user, logoutMessage, isLoading } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -69,8 +70,10 @@ const Navigationbar = () => {
                 Search
               </Button>
             </Form>
-
-            {user ? (
+            {isLoading ? (
+              // <p className="text-center text-light">Loading...</p>
+              <></>
+            ) : user ? (
               <UserProfileDropdown user={user} />
             ) : (
               <>
