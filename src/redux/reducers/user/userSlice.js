@@ -43,6 +43,23 @@ export const getUserInfo = createAsyncThunk(
     }
   }
 );
+export const updatePassword = createAsyncThunk(
+  "user/updatePassword",
+  async ({ oldPassword, newPassword }, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+
+      await userService.updatePassword(oldPassword, newPassword, token);
+      return "Password updated successfully.";
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 const userSlice = createSlice({
   name: "userSlice",
@@ -55,6 +72,9 @@ const userSlice = createSlice({
       state.message = "";
       state.user = null;
     },
+    // updatedAvatarUrl: (state, action) => {
+    //   state.user.avatar.url = action.payload;
+    // },
   },
   extraReducers: (builder) => {
     builder

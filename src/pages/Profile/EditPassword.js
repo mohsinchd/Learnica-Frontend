@@ -5,11 +5,11 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../redux/reducers/user/userSlice";
 
-import UserProfile from "../../components/ProfileComponents/UserProfile";
 import Loader from "../../components/SharedComponents/Loader";
 import EnrolledCourses from "../../components/ProfileComponents/EnrolledCourses";
+import PasswordUpdate from "../../components/ProfileComponents/PasswordUpdate";
 
-const EditProfile = () => {
+const EditPassword = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.user
   );
@@ -26,7 +26,7 @@ const EditProfile = () => {
 
     dispatch(getUserInfo());
   }, [isError, isSuccess, message]);
-  // console.log(user);
+  console.log(user);
   return (
     <div style={{ paddingTop: "150px" }}>
       {isLoading ? (
@@ -36,7 +36,8 @@ const EditProfile = () => {
           <Row>
             <Col md={4}>
               <h1>User Profile</h1>
-              <UserProfile user={user} />
+
+              <PasswordUpdate />
             </Col>
             <Col md={8}>
               <h1>Enrolled Courses</h1>
@@ -49,4 +50,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default EditPassword;

@@ -52,13 +52,15 @@ const UserProfileDropdown = () => {
         </Dropdown.Item>
 
         <Dropdown.Divider />
-        <Dropdown.Item
-          onClick={() => navigate("/edit-profile/password-Information")}
-        >
+        <Dropdown.Item onClick={() => navigate("/edit-password")}>
           Password
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={() => navigate("/edit-profile/enrollment")}>
+        <Dropdown.Item onClick={() => navigate("/profile-photo")}>
+          profile photo
+          <Dropdown.Divider />
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => navigate("/profile-photo")}>
           Enrolled status
         </Dropdown.Item>
         <Dropdown.Divider />

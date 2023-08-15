@@ -2,7 +2,7 @@ import React from "react";
 import Image from "react-bootstrap/Image";
 import { FaUserCircle } from "react-icons/fa"; // Import the user circle icon
 
-const Avatar = ({ src, alt }) => {
+const Avatar = ({ src, alt, children }) => {
   if (src) {
     return (
       <div className="d-flex  justify-content-center my-4">
@@ -12,8 +12,9 @@ const Avatar = ({ src, alt }) => {
           roundedCircle
           className="img-fluid"
           style={{
-            width: "200px",
-            height: "200px",
+            width: "150px",
+            height: "150px",
+            objectFit: "cover",
           }}
         />
       </div>
@@ -21,6 +22,7 @@ const Avatar = ({ src, alt }) => {
   } else {
     return (
       <div className="d-flex justify-content-center my-4">
+        {children}
         <FaUserCircle size={100} />
       </div>
     );

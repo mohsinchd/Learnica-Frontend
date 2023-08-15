@@ -12,6 +12,8 @@ import Register from "./pages/Auth/Register";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import EditProfile from "./pages/Profile/EditProfile";
+import EditPassword from "./pages/Profile/EditPassword";
+import EditProfilePhoto from "./pages/Profile/EditProfilePhoto";
 
 const App = () => {
   return (
@@ -29,7 +31,8 @@ const App = () => {
               element={<ResetPassword />}
             />
             <Route path="/edit-profile" element={<EditProfile />} />
-
+            <Route path="/edit-password" element={<EditPassword />} />
+            <Route path="/profile-photo" element={<EditProfilePhoto />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
