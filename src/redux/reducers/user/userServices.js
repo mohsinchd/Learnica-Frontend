@@ -31,9 +31,31 @@ const userInfo = async (token) => {
   return data;
 };
 
+// Update Password
+const updatePassword = async (oldPassword, newPassword, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const data = {
+    oldPassword,
+    newPassword,
+  };
+
+  const response = await axios.put(
+    `${API_URL}/api/v1/user/updatePassword`,
+    data,
+    config
+  );
+
+  return response.data;
+};
 const userService = {
   updateUserInfo,
   userInfo,
+  updatePassword,
 };
 
 export default userService;
