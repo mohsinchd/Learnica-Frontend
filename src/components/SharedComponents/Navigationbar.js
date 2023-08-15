@@ -11,7 +11,7 @@ import { reset } from "../../redux/reducers/auth/authSlice";
 import { toast } from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 import UserProfileDropdown from "../AuthComponents/UserProfileDropdown";
-import Loader from "./Loader";
+import SmallLoader from "./SmallLoader";
 
 const Navigationbar = () => {
   const { user, logoutMessage, isLoading } = useSelector((state) => state.auth);
@@ -71,8 +71,9 @@ const Navigationbar = () => {
               </Button>
             </Form>
             {isLoading ? (
-              // <p className="text-center text-light">Loading...</p>
-              <></>
+              <>
+                <SmallLoader />
+              </>
             ) : user ? (
               <UserProfileDropdown user={user} />
             ) : (

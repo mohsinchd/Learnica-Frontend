@@ -1,17 +1,28 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducers/auth/authSlice"; // Import your logout action
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { getUserInfo } from "../../redux/reducers/user/userSlice";
+import SmallLoader from "../SharedComponents/SmallLoader";
 
-const UserProfileDropdown = ({ user }) => {
+const UserProfileDropdown = () => {
+  const { user, isLoading } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleLogout = () => {
     dispatch(logout());
   };
 
-  return (
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
+
+  return isLoading ? (
+    <SmallLoader />
+  ) : (
     <>
       <DropdownButton
         id="user-profile-dropdown"
