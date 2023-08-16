@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import toast from "react-hot-toast";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "../../redux/reducers/user/userSlice";
+import { getUserInfo, reset } from "../../redux/reducers/user/userSlice";
 
 import Loader from "../../components/SharedComponents/Loader";
 import EnrolledCourses from "../../components/ProfileComponents/EnrolledCourses";
@@ -25,7 +25,7 @@ const ProfilePhoto = () => {
 
     dispatch(getUserInfo());
   }, [isError, isSuccess, message]);
-  console.log(user);
+
   return (
     <div style={{ paddingTop: "150px" }}>
       {isLoading ? (
@@ -34,7 +34,7 @@ const ProfilePhoto = () => {
         <Container>
           <Row>
             <Col md={4}>
-              <h1>User Profile</h1>
+              <h1>Profile Picture</h1>
 
               <ProfilePhotoUpdate />
             </Col>

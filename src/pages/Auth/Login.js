@@ -55,6 +55,10 @@ const Login = () => {
       toast.error(message);
       dispatch(reset());
     }
+
+    if (user) {
+      navigate("/");
+    }
   }, [user, isError, message, dispatch]);
 
   return (
