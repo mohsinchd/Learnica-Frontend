@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ProtectedRoute } from "protected-route-react";
+import { useSelector } from "react-redux";
 
 import { Toaster } from "react-hot-toast";
 
@@ -16,6 +18,8 @@ import EditPassword from "./pages/Profile/EditPassword";
 import EditProfilePhoto from "./pages/Profile/EditProfilePhoto";
 
 const App = () => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <BrowserRouter>
       <Navigationbar />
@@ -23,6 +27,7 @@ const App = () => {
         <main>
           <Routes>
             <Route index element={<Home />} />
+
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/forget-password" element={<ForgotPassword />} />
@@ -30,9 +35,15 @@ const App = () => {
               path="/api/v1/user/resetPassword/:token"
               element={<ResetPassword />}
             />
-            <Route path="/edit-profile" element={<EditProfile />} />
-            <Route path="/edit-password" element={<EditPassword />} />
-            <Route path="/profile-photo" element={<EditProfilePhoto />} />
+
+            <Route
+              element={<ProtectedRoute isAuthenticated={user ? true : false} />}
+            >
+              <Route path="/edit-profile" element={<EditProfile />} />
+              <Route path="/edit-password" element={<EditPassword />} />
+              <Route path="/profile-photo" element={<EditProfilePhoto />} />
+            </Route>
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

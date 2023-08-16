@@ -88,6 +88,10 @@ const Register = () => {
       toast.success(message);
       dispatch(reset());
     }
+
+    if (user) {
+      navigate("/");
+    }
   }, [isError, message, user, isLoading]);
 
   return (

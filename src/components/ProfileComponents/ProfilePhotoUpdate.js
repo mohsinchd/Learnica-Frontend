@@ -1,45 +1,59 @@
 import React, { useState } from "react";
 
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 import Avatar from "../SharedComponents/Avatar";
 
 import { useSelector, useDispatch } from "react-redux";
-import { updateInfo } from "../../redux/reducers/user/userSlice";
+import { updateProfilePic } from "../../redux/reducers/user/userSlice";
 
 const ProfilePhotoUpdate = () => {
   const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.user);
-  const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleImageChange = (event) => {
-    const selectedFile = event.target.files[0];
-    setSelectedImage(selectedFile);
+  const [image, setImage] = useState("");
+  const [imagePrev, setImagePrev] = useState(user.avatar.url);
 
-    // Create form data and append the selected image
-    const formData = new FormData();
-    formData.append("avatar", selectedImage);
+  const selectImageHandler = (e) => {
+    const file = e.target.files[0];
 
-    // Dispatch the updateInfo action with form data
-    dispatch(updateInfo(formData));
+    const fileReader = new FileReader();
+
+    fileReader.readAsDataURL(file);
+
+    fileReader.onloadend = () => {
+      setImagePrev(fileReader.result);
+      setImage(file);
+    };
   };
 
-  // const avatarSrc = selectedImage || user.avatar.url;
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const userData = new FormData();
+
+    userData.append("file", image);
+
+    dispatch(updateProfilePic(userData));
+  };
 
   return (
     <div>
-      <p className="text-center">Profile Photo</p>
-      <Avatar src={user.avatar.url} />
-      <span style={{ color: "red", fontWeight: "700" }}>Delete</span>
+      <Avatar src={imagePrev} alt="no picture" />
+      <Form onSubmit={submitHandler}>
+        <Form.Group controlId="profilePicture">
+          <Form.Label>Profile Picture</Form.Label>
+          <Form.Control
+            type="file"
+            placeholder="Select Profile Photo"
+            onChange={selectImageHandler}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="profilePicture">
-        <Form.Label>choose Another you want ! </Form.Label>
-        <Form.Control
-          type="file"
-          placeholder="Select Profile Photo"
-          onChange={handleImageChange}
-        />
-      </Form.Group>
+        <Button type="submit" variant="outline-success" className="mt-2">
+          Change Photo
+        </Button>
+      </Form>
     </div>
   );
 };

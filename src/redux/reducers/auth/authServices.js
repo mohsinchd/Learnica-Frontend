@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const API_URL = "https://learnica-backend-production.up.railway.app";
-// export const API_URL = "http://localhost:5000";
+// export const API_URL = "https://learnica-backend-production.up.railway.app";
+export const API_URL = "http://localhost:5000";
 
 // Register User
 const registerUser = async (userData) => {

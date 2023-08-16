@@ -3,30 +3,31 @@ import { Container, Row, Col } from "react-bootstrap";
 import toast from "react-hot-toast";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "../../redux/reducers/user/userSlice";
 
 import Loader from "../../components/SharedComponents/Loader";
 import EnrolledCourses from "../../components/ProfileComponents/EnrolledCourses";
 import PasswordUpdate from "../../components/ProfileComponents/PasswordUpdate";
+import { reset } from "../../redux/reducers/user/userSlice";
 
 const EditPassword = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.user
   );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (isError && message) {
       toast.error(message);
+      dispatch(reset());
     }
 
     if (isSuccess && message) {
       toast.success(message);
+      dispatch(reset());
     }
-
-    dispatch(getUserInfo());
   }, [isError, isSuccess, message]);
-  console.log(user);
+
   return (
     <div style={{ paddingTop: "150px" }}>
       {isLoading ? (
@@ -35,8 +36,7 @@ const EditPassword = () => {
         <Container>
           <Row>
             <Col md={4}>
-              <h1>User Profile</h1>
-
+              <h1>Update Password</h1>
               <PasswordUpdate />
             </Col>
             <Col md={8}>

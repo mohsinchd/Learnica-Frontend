@@ -32,30 +32,44 @@ const userInfo = async (token) => {
 };
 
 // Update Password
-const updatePassword = async (oldPassword, newPassword, token) => {
+const updatePassword = async (data, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const data = {
-    oldPassword,
-    newPassword,
-  };
-
   const response = await axios.put(
-    `${API_URL}/api/v1/user/updatePassword`,
+    `${API_URL}/api/v1/user/changePassword`,
     data,
     config
   );
 
   return response.data;
 };
+
+// Update Profile Picture
+const updatePicture = async (file, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const { data } = await axios.put(
+    `${API_URL}/api/v1/user/updateProfilePicture`,
+    file,
+    config
+  );
+
+  return data;
+};
+
 const userService = {
   updateUserInfo,
   userInfo,
   updatePassword,
+  updatePicture,
 };
 
 export default userService;

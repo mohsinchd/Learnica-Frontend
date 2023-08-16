@@ -43,14 +43,31 @@ export const getUserInfo = createAsyncThunk(
     }
   }
 );
+
+// Update Password
 export const updatePassword = createAsyncThunk(
   "user/updatePassword",
-  async ({ oldPassword, newPassword }, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
+      return await userService.updatePassword(data, token);
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
-      await userService.updatePassword(oldPassword, newPassword, token);
-      return "Password updated successfully.";
+// Update Profile Photo
+export const updateProfilePic = createAsyncThunk(
+  "user/updatePicture",
+  async (file, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await userService.updatePicture(file, token);
     } catch (error) {
       const message =
         error.response && error.response.data.message
@@ -70,11 +87,7 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isSuccess = false;
       state.message = "";
-      state.user = null;
     },
-    // updatedAvatarUrl: (state, action) => {
-    //   state.user.avatar.url = action.payload;
-    // },
   },
   extraReducers: (builder) => {
     builder
@@ -108,6 +121,36 @@ const userSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.user = null;
+        state.message = action.payload;
+      })
+      .addCase(updatePassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updatePassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+      .addCase(updatePassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.isSuccess = false;
+        state.message = action.payload;
+      })
+      .addCase(updateProfilePic.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateProfilePic.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+      .addCase(updateProfilePic.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.isSuccess = false;
         state.message = action.payload;
       });
   },
