@@ -8,6 +8,7 @@ import { register, reset } from "../../redux/reducers/auth/authSlice";
 import toast from "react-hot-toast";
 
 import Loader from "../../components/SharedComponents/Loader";
+import { getUserInfo } from "../../redux/reducers/user/userSlice";
 
 const Register = () => {
   const [formData, setFormData] = useState({
