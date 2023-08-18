@@ -75,7 +75,7 @@ const Navigationbar = () => {
                 <SmallLoader />
               </>
             ) : user ? (
-              <UserProfileDropdown user={user} />
+              <UserProfileDropdown />
             ) : (
               <>
                 <NavLink to="/Login">
