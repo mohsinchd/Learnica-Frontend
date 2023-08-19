@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Button, Row, Col, Card } from "react-bootstrap";
-import pcBoy from "../../Images/pcBoy.jpg";
+
 import InstructorGuideCards from "./InstructorGuideCards";
 const InstructorMainPage = () => {
   return (
