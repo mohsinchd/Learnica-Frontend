@@ -64,7 +64,7 @@ const UserProfileDropdown = () => {
           Enrolled status
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={() => navigate("")}>
+        <Dropdown.Item onClick={() => navigate("/instructor-main-page")}>
           Become Instructor
         </Dropdown.Item>
         <Dropdown.Divider />

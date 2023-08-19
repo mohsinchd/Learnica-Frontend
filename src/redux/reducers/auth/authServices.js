@@ -18,7 +18,7 @@ const registerUser = async (userData) => {
   );
 
   if (data.user) {
-    localStorage.setItem("user", JSON.stringify(data.user));
+    sessionStorage.setItem("user", JSON.stringify(data.user));
   }
 
   return data;
@@ -28,7 +28,7 @@ const registerUser = async (userData) => {
 const logoutUser = async () => {
   const { data } = await axios.get(`${API_URL}/api/v1/user/logout`);
 
-  localStorage.removeItem("user");
+  sessionStorage.removeItem("user");
 
   return data;
 };
@@ -42,7 +42,7 @@ const loginUser = async (userData) => {
   });
 
   if (data.user) {
-    localStorage.setItem("user", JSON.stringify(data.user));
+    sessionStorage.setItem("user", JSON.stringify(data.user));
   }
 
   return data;
