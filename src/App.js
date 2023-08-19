@@ -16,6 +16,11 @@ import ResetPassword from "./pages/Auth/ResetPassword";
 import EditProfile from "./pages/Profile/EditProfile";
 import EditPassword from "./pages/Profile/EditPassword";
 import EditProfilePhoto from "./pages/Profile/EditProfilePhoto";
+import InstructorMainPage from "./components/instructor/InstructorMainPage";
+import GetStartedWithVideo from "./components/instructor/instructorGuidDetails/GetStartedWithVideo";
+import CreateIntriGungCourse from "./components/instructor/instructorGuidDetails/CreateIntriGungCourse";
+import BuildYourAudience from "./components/instructor/instructorGuidDetails/BuildYourAudience";
+import InstructorChallenge from "./components/instructor/instructorGuidDetails/InstructorChallenge";
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
@@ -41,6 +46,26 @@ const App = () => {
             >
               <Route path="/edit-profile" element={<EditProfile />} />
               <Route path="/edit-password" element={<EditPassword />} />
+              <Route
+                path="/instructor-main-page"
+                element={<InstructorMainPage />}
+              />
+              <Route
+                path="/inst-page/create-course"
+                element={<CreateIntriGungCourse />}
+              />
+              <Route
+                path="/inst-page/startWithVideo"
+                element={<GetStartedWithVideo />}
+              />
+              <Route
+                path="/inst-page/BuidAudience"
+                element={<BuildYourAudience />}
+              />
+              <Route
+                path="inst-page/instChallenge"
+                element={<InstructorChallenge />}
+              />
               <Route path="/profile-photo" element={<EditProfilePhoto />} />
             </Route>
 
