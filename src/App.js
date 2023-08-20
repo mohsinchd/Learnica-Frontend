@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ProtectedRoute } from "protected-route-react";
 import { useSelector } from "react-redux";
 
@@ -21,13 +21,24 @@ import GetStartedWithVideo from "./components/instructor/instructorGuidDetails/G
 import CreateIntriGungCourse from "./components/instructor/instructorGuidDetails/CreateIntriGungCourse";
 import BuildYourAudience from "./components/instructor/instructorGuidDetails/BuildYourAudience";
 import InstructorChallenge from "./components/instructor/instructorGuidDetails/InstructorChallenge";
-
-const App = () => {
+import InstNewCourseForm from "./components/instructor/InstNewCourseForm";
+const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
+  // const location = useLocation();
+  const showNavigationRoutes = [
+    "/",
+    "/edit-profile",
+    "/profile-photo",
+    "/instructor-main-page",
+  ];
+  // const shouldShowNavigationbar = showNavigationRoutes.includes(
+  //   location.pathname
+  // );
 
   return (
     <BrowserRouter>
-      <Navigationbar />
+      {<Navigationbar />}
+
       <div className="">
         <main>
           <Routes>
@@ -66,6 +77,10 @@ const App = () => {
                 path="inst-page/instChallenge"
                 element={<InstructorChallenge />}
               />
+              <Route
+                path="/instNewCourseForm"
+                element={<InstNewCourseForm />}
+              />
               <Route path="/profile-photo" element={<EditProfilePhoto />} />
             </Route>
 
@@ -79,4 +94,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default RouterComponent;
