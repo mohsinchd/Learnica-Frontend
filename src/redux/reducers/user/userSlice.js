@@ -7,6 +7,7 @@ const initialState = {
   isSuccess: false,
   message: "",
   user: null,
+  instructorCourses: {},
 };
 
 // Update User Info
@@ -77,7 +78,17 @@ export const updateProfilePic = createAsyncThunk(
     }
   }
 );
-
+// Make a course by Instructor
+export const makeCourseByInstructor = createAsyncThunk(
+  "user/makeCourseByInstructor",
+  async (courseData, thunkAPI) => {
+    try {
+      return await userService.makeCourseByInstructor(courseData);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 const userSlice = createSlice({
   name: "userSlice",
   initialState,
@@ -152,6 +163,13 @@ const userSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.payload;
+      })
+      .addCase(makeCourseByInstructor.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+        state.instructorCourses = action.payload;
       });
   },
 });

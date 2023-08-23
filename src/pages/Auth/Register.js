@@ -11,14 +11,13 @@ import Loader from "../../components/SharedComponents/Loader";
 import { getUserInfo } from "../../redux/reducers/user/userSlice";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { isLoading, user, isError, message } = useSelector(
@@ -31,6 +30,7 @@ const Register = () => {
   const [imagePrev, setImagePrev] = useState("");
 
   const handleChange = (e) => {
+    console.log(e);
     setFormData((prev) => {
       return {
         ...prev,
