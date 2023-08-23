@@ -4,10 +4,9 @@ import { Form, Container, Button, Row, Col } from "react-bootstrap";
 import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { makeCourseByInstructor } from "../../redux/reducers/user/userSlice";
+import { createCourse } from "../../redux/reducers/instructor/instructorSlice";
+
 const InstNewCourseForm = () => {
-  // const user = useSelector((state) => state.user);
-  // console.log(user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -17,16 +16,15 @@ const InstNewCourseForm = () => {
     price: "",
     file: "",
     preReq: "",
-    courseFor: "This course is for all beginners and intermediate students..",
+    courseFor: "This course is for beginners",
   });
 
-  const handleDrop = (acceptedFiles) => {
-    if (acceptedFiles.length > 0) {
-      // setThumbnail(URL.createObjectURL(acceptedFiles[0]));
-      setFormData((prev) => {
-        return { ...prev, file: URL.createObjectURL(acceptedFiles[0]) };
-      });
-    }
+  const handleDrop = (e) => {
+    const file = e.target.files[0];
+
+    setFormData((prev) => {
+      return { ...prev, file: file };
+    });
   };
 
   // change-Handler
@@ -38,24 +36,15 @@ const InstNewCourseForm = () => {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    // Perform form submission logic here
+    formData.price = Number(formData.price);
+
     const courseData = new FormData();
 
-    for (const key in formData) {
+    for (let key in formData) {
       courseData.append(key, formData[key]);
     }
-    // console.log(formData);
-    dispatch(makeCourseByInstructor);
 
-    setFormData({
-      title: "",
-      description: "",
-      category: "",
-      price: "",
-      file: "",
-      preReq: "",
-      courseFor: "This course is for all beginners and intermediate students..",
-    });
+    dispatch(createCourse(courseData));
   };
 
   return (
@@ -95,7 +84,7 @@ const InstNewCourseForm = () => {
               </Form.Group>
               <Form.Group controlId="file" className="mb-4">
                 <Form.Label>Thumbnail</Form.Label>
-                <Dropzone onDrop={handleDrop}>
+                {/* <Dropzone onDrop={handleDrop}>
                   {({ getRootProps, getInputProps }) => (
                     <div {...getRootProps()} className="thumbnail-dropzone">
                       <input {...getInputProps()} />
@@ -112,7 +101,12 @@ const InstNewCourseForm = () => {
                       )}
                     </div>
                   )}
-                </Dropzone>
+                </Dropzone> */}
+                <Form.Control
+                  type="file"
+                  name="file"
+                  onChange={handleDrop}
+                ></Form.Control>
               </Form.Group>
 
               <Form.Group controlId="Price" className="mb-4">
@@ -126,19 +120,19 @@ const InstNewCourseForm = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>Course Type</Form.Label>
+                <Form.Label>Category</Form.Label>
                 <Form.Select
+                  name="category"
                   aria-label="Default select example"
                   onChange={inputChangeHandler}
                 >
                   <option>Open this select menu</option>
-                  <option value="1">Development</option>
-                  <option value="2">Design</option>
-                  <option value="3">IT & Software</option>
-                  <option value="4">Business</option>
-                  <option value="5">Marketing</option>
-                  <option value="6">Music</option>
-                  <option value="7">I don't know </option>
+                  <option value="Development">Development</option>
+                  <option value="Design">Design</option>
+                  <option value="IT & Software">IT & Software</option>
+                  <option value="Business">Business</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Music">Music</option>
                 </Form.Select>
               </Form.Group>
               <div className="d-flex justify-content-between">

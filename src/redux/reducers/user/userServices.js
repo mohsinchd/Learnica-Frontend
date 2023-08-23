@@ -67,26 +67,11 @@ const updatePicture = async (file, token) => {
   return data;
 };
 
-// Make a course by Instructor
-const makeCourseByInstructor = async (courseData) => {
-  const { data } = await axios.post(`${API_URL}/api/v1/course`, courseData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
-
-  if (data.user) {
-    sessionStorage.setItem("user", JSON.stringify(data.user));
-  }
-  console.log(data);
-  return data;
-};
 const userService = {
   updateUserInfo,
   userInfo,
   updatePassword,
   updatePicture,
-  makeCourseByInstructor,
 };
 
 export default userService;
