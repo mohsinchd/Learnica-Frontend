@@ -7,7 +7,6 @@ const initialState = {
   isSuccess: false,
   message: "",
   user: null,
-  instructorCourses: {},
 };
 
 // Update User Info

@@ -22,6 +22,9 @@ import CreateIntriGungCourse from "./components/instructor/instructorGuidDetails
 import BuildYourAudience from "./components/instructor/instructorGuidDetails/BuildYourAudience";
 import InstructorChallenge from "./components/instructor/instructorGuidDetails/InstructorChallenge";
 import InstNewCourseForm from "./components/instructor/InstNewCourseForm";
+
+import InstCoursesMainPage from "./components/instructor/InstructorCourses/InstCoursesMainPage";
+
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
   // const location = useLocation();
@@ -57,6 +60,8 @@ const RouterComponent = () => {
             >
               <Route path="/edit-profile" element={<EditProfile />} />
               <Route path="/edit-password" element={<EditPassword />} />
+              <Route path="/profile-photo" element={<EditProfilePhoto />} />
+
               <Route
                 path="/instructor-main-page"
                 element={<InstructorMainPage />}
@@ -81,7 +86,10 @@ const RouterComponent = () => {
                 path="/instNewCourseForm"
                 element={<InstNewCourseForm />}
               />
-              <Route path="/profile-photo" element={<EditProfilePhoto />} />
+              <Route
+                path="/instructor/courses"
+                element={<InstCoursesMainPage />}
+              />
             </Route>
 
             <Route path="*" element={<NotFound />} />
