@@ -1,59 +1,16 @@
 import React from "react";
-import {
-  Container,
-  Button,
-  Row,
-  Col,
-  Offcanvas,
-  Navbar,
-  Nav,
-} from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { SiSololearn } from "react-icons/si";
+import { Container, Button, Row, Col } from "react-bootstrap";
 
 import InstructorGuideCards from "./InstructorGuideCards";
-
+import InstructorOffCanvas from "./InstructorOffCanvas";
+import { Link } from "react-router-dom";
+import BackButton from "../SharedComponents/BackButton";
 const InstructorMainPage = () => {
-  const [show, setShow] = React.useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   return (
     <Container fluid style={{ marginTop: "150px" }}>
       <Row>
         <Col md={2} className="">
-          <Button
-            variant="primary"
-            onClick={handleShow}
-            className="text-success position-fixed"
-          >
-            Launch
-          </Button>
-
-          <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Close</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Navbar>
-                <NavLink to="/">
-                  <Navbar.Brand>
-                    <SiSololearn size={25} className="text-success" /> LEARNICA
-                  </Navbar.Brand>
-                </NavLink>
-              </Navbar>
-              <Nav className="flex-column">
-                <Nav.Link href="#student">Student</Nav.Link>
-                <Link to="/instNewCourseForm">
-                  <Nav.Link href="/instNewCourseForm">
-                    Make a New Course
-                  </Nav.Link>
-                </Link>
-                <Nav.Link href="#logout">Logout</Nav.Link>
-              </Nav>
-            </Offcanvas.Body>
-          </Offcanvas>
+          <InstructorOffCanvas />
         </Col>
         <Col md={8}>
           <h1>Courses</h1>
@@ -81,6 +38,7 @@ const InstructorMainPage = () => {
 
             {/* cards */}
             <InstructorGuideCards />
+            <BackButton />
           </Container>
         </Col>
       </Row>

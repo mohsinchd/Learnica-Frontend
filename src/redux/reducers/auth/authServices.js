@@ -35,6 +35,7 @@ const logoutUser = async () => {
 };
 
 // Login User
+// Lekin jab aap simple data ko POST request mein bhejte hain jo string ya JSON format mein hota hai,
 const loginUser = async (userData) => {
   const { data } = await axios.post(`${API_URL}/api/v1/user/login`, userData, {
     headers: {
