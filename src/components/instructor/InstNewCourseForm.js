@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Form, Container, Button, Row, Col } from "react-bootstrap";
 
-import Dropzone from "react-dropzone";
+// import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { createCourse } from "../../redux/reducers/instructor/instructorSlice";
+import InstructorOffCanvas from "./InstructorOffCanvas";
+import BackButton from "../SharedComponents/BackButton";
 
 const InstNewCourseForm = () => {
   const dispatch = useDispatch();
@@ -49,11 +51,16 @@ const InstNewCourseForm = () => {
 
   return (
     <div style={{ marginTop: "150px" }}>
-      <Container className="w-50 authWidth shadow p-5">
-        <h2 className="text-center mb-4">Requirements ! For Make Course</h2>
+      <Container className=" ">
         <Row>
-          <Col>
+          <Col md={2}>
+            <InstructorOffCanvas />
+          </Col>
+          <Col md={10} className="  autoWidth shadow p-5">
             <Form onSubmit={submitFormHandler} className="">
+              <h2 className="text-center mb-4">
+                Requirements ! For Make Course
+              </h2>
               <Form.Group controlId="title" className="mb-4">
                 <Form.Label>Course Title</Form.Label>
                 <Form.Control
@@ -84,24 +91,7 @@ const InstNewCourseForm = () => {
               </Form.Group>
               <Form.Group controlId="file" className="mb-4">
                 <Form.Label>Thumbnail</Form.Label>
-                {/* <Dropzone onDrop={handleDrop}>
-                  {({ getRootProps, getInputProps }) => (
-                    <div {...getRootProps()} className="thumbnail-dropzone">
-                      <input {...getInputProps()} />
-                      {formData.file ? (
-                        <img src={formData.file} alt="Thumbnail" />
-                      ) : (
-                        <p>
-                          <Button className="w-100" variant="">
-                            Drag'n drop
-                          </Button>
-                          Drag 'n' drop a thumbnail image here, to guess the
-                          course quality !
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </Dropzone> */}
+
                 <Form.Control
                   type="file"
                   name="file"
@@ -135,15 +125,12 @@ const InstNewCourseForm = () => {
                   <option value="Music">Music</option>
                 </Form.Select>
               </Form.Group>
-              <div className="d-flex justify-content-between">
-                <Button variant="danger" onClick={() => navigate(-1)}>
-                  cancel
-                </Button>
-                <Button variant="success" type="submit">
-                  Add Course
-                </Button>
-              </div>
+
+              <Button variant="success" className="w-100" type="submit">
+                Add Course
+              </Button>
             </Form>
+            <BackButton />
           </Col>
         </Row>
       </Container>
