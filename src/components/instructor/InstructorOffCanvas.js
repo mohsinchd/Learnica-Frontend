@@ -3,6 +3,7 @@ import { Button, Offcanvas, Navbar, Nav } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import { SiSololearn } from "react-icons/si";
 const InstructorOffCanvas = () => {
+  // Instructor canvas
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);
