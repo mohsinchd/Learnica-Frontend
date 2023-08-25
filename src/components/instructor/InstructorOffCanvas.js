@@ -19,22 +19,27 @@ const InstructorOffCanvas = () => {
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Close</Offcanvas.Title>
+          <Offcanvas.Title>
+            <Navbar>
+              <NavLink to="/">
+                <Navbar.Brand>
+                  <SiSololearn size={25} className="text-success" /> LEARNICA
+                </Navbar.Brand>
+              </NavLink>
+            </Navbar>
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Navbar>
-            <NavLink to="/">
-              <Navbar.Brand>
-                <SiSololearn size={25} className="text-success" /> LEARNICA
-              </Navbar.Brand>
-            </NavLink>
-          </Navbar>
           <Nav className="flex-column">
-            <Nav.Link href="#student">Student</Nav.Link>
-            <Link to="/instNewCourseForm">
-              <Nav.Link href="/instNewCourseForm">Make a New Course</Nav.Link>
-            </Link>
-            <Nav.Link href="#logout">Logout</Nav.Link>
+            <Nav.Link>
+              <Link to="/">Become a Student</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/instNewCourseForm">Make a New Course</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/instructor/courses">View Your Courses</Link>
+            </Nav.Link>
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>
