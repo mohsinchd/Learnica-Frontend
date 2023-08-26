@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Dropdown, Table } from "react-bootstrap";
 import { BsThreeDots } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const InstCoursesTable = ({ courses }) => {
   return (
@@ -29,7 +30,9 @@ const InstCoursesTable = ({ courses }) => {
                   <BsThreeDots size={20} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item>Add Sections</Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/instructorCourse/section">Add Sections</Link>
+                  </Dropdown.Item>
                   <Dropdown.Item>Delete Course</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
