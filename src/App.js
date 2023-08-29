@@ -22,7 +22,7 @@ import CreateIntriGungCourse from "./components/instructor/instructorGuidDetails
 import BuildYourAudience from "./components/instructor/instructorGuidDetails/BuildYourAudience";
 import InstructorChallenge from "./components/instructor/instructorGuidDetails/InstructorChallenge";
 import InstNewCourseForm from "./components/instructor/InstNewCourseForm";
-import InstructorCourseSection from "./components/instructor/InstructorCourses/InstCourseSection";
+import InstructorCourseSection from "./components/instructor/InstructorSections/InstCourseSection";
 import InstCoursesMainPage from "./components/instructor/InstructorCourses/InstCoursesMainPage";
 
 const RouterComponent = () => {
@@ -90,11 +90,11 @@ const RouterComponent = () => {
                 path="/instructor/courses"
                 element={<InstCoursesMainPage />}
               />
+              <Route
+                path="/instructorCourse/section/:id"
+                element={<InstructorCourseSection />}
+              />
             </Route>
-            <Route
-              path="/instructorCourse/section"
-              element={<InstructorCourseSection />}
-            ></Route>
 
             <Route path="*" element={<NotFound />} />
           </Routes>

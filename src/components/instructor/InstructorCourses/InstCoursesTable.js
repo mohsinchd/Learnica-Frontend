@@ -31,7 +31,9 @@ const InstCoursesTable = ({ courses }) => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Link to="/instructorCourse/section">Add Sections</Link>
+                    <Link to={`/instructorCourse/section/${course._id}`}>
+                      Add Sections
+                    </Link>
                   </Dropdown.Item>
                   <Dropdown.Item>Delete Course</Dropdown.Item>
                 </Dropdown.Menu>
