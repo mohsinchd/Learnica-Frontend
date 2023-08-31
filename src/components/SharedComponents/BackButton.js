@@ -8,7 +8,7 @@ const BackButton = () => {
     <div className="text-center mt-5 ">
       <Button
         variant="outline-success"
-        className="w-100"
+        className=""
         onClick={() => navigate(-1)}
       >
         <BiArrowBack />
