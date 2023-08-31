@@ -5,7 +5,7 @@ import { BsThreeDots } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
-const InstCourseSectionTable = ({ sections }) => {
+const InstCourseSectionTable = ({ sections, courseId }) => {
   console.log(sections);
   return (
     <>
@@ -33,7 +33,9 @@ const InstCourseSectionTable = ({ sections }) => {
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item>
-                        <Link to={`instructorCourse/:${section._id}`}>
+                        <Link
+                          to={`/instructorCourse/lectures/${courseId}/${section._id}`}
+                        >
                           Add Lecture
                         </Link>
                       </Dropdown.Item>

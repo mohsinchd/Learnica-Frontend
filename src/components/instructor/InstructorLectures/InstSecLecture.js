@@ -1,60 +1,91 @@
-import React, { useState } from "react";
-import { Table } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { toast } from "react-hot-toast";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import BackButton from "../../SharedComponents/BackButton";
+import InstSecLectureTable from "./InstSecLectureTable";
+import Loader from "../../SharedComponents/Loader";
+
+import {
+  createLecture,
+  reset,
+  getLectures,
+} from "../../../redux/reducers/courseLectures/courseLecturesSlice";
 
 const InstSecLecture = () => {
   const [title, setTitle] = useState("");
   const [isVideoFile, setIsVideoFile] = useState("");
-  const [lectures, setLectures] = useState([]);
+  const [video, setVideo] = useState("");
+
+  const { courseId, sectionId } = useParams();
+
+  const {
+    isLoading,
+    isError,
+    isSuccess,
+    errorMessage,
+    successMessage,
+    lectures,
+  } = useSelector((state) => state.courseLectures);
+
+  const dispatch = useDispatch();
 
   const handlevideoUpload = (event) => {
     setIsVideoFile(URL.createObjectURL(event.target.files[0]));
+    setVideo(event.target.files[0]);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
+    const lectureData = new FormData();
 
-    const updatedLectures = {
-      title,
-      lectureVideo: isVideoFile,
-      id: crypto.randomUUID(),
+    if (!title || !video) {
+      return toast.error("Title and Video is Required.");
+    }
+
+    lectureData.append("title", title);
+    lectureData.append("file", video);
+
+    let data = {
+      ids: {
+        courseId,
+        sectionId,
+      },
+      lectureData,
     };
-    setLectures((previous) => {
-      return [...previous, updatedLectures];
-    });
-    setTitle("");
-    setIsVideoFile("");
+
+    dispatch(createLecture(data));
   };
+
+  useEffect(() => {
+    if (isSuccess && successMessage) {
+      toast.success(successMessage);
+      dispatch(reset());
+    }
+
+    if (isError && errorMessage) {
+      toast.error(errorMessage);
+      dispatch(reset());
+    }
+
+    dispatch(getLectures({ courseId, sectionId }));
+  }, [isSuccess, isError, successMessage, errorMessage]);
 
   return (
     <div style={{ marginTop: "150px" }}>
       <Container>
         <Row>
-          <Col md={6}>
-            <h3 className="text-center">SECTIONS</h3>
-            {lectures.length === 0 ? (
-              <h4>No Sections for this course.</h4>
+          <Col md={8}>
+            <h3>Lectures</h3>
+            {isLoading ? (
+              <Loader />
             ) : (
-              <Table responsive striped hover>
-                <thead>
-                  <th>Section Titles</th>
-                  <th></th>
-                </thead>
-                <tbody>
-                  {lectures.map((lecture) => (
-                    <tr key={lecture.id}>
-                      <td>{lecture.title}</td>
-                      <td>
-                        <Button variant="success">EDIT</Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
+              <InstSecLectureTable lectures={lectures} />
             )}
           </Col>
-          <Col md={6}>
+          <Col md={4}>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3" controlId="forTheTitle">
                 <Form.Label>Title </Form.Label>
@@ -66,7 +97,7 @@ const InstSecLecture = () => {
                 />
               </Form.Group>
               <Form.Group controlId="videoLecture">
-                <Form.Label>Which is the Lecture video ..</Form.Label>
+                <Form.Label>Select Video</Form.Label>
                 <Form.Control type="file" onChange={handlevideoUpload} />
               </Form.Group>
               {isVideoFile && (
@@ -80,8 +111,8 @@ const InstSecLecture = () => {
                   </video>
                 </div>
               )}
-              <Button type="submit" variant="success" className="mt-3 w-100">
-                Click to Add Lecture
+              <Button type="submit" variant="success" className="mt-3">
+                Add Lecture
               </Button>
             </Form>
           </Col>
