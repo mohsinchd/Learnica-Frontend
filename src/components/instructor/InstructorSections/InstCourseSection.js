@@ -74,7 +74,7 @@ const InstCourseSection = () => {
           {isLoading ? (
             <Loader />
           ) : (
-            <InstCourseSectionTable sections={sections} />
+            <InstCourseSectionTable sections={sections} courseId={id} />
           )}
         </div>
 

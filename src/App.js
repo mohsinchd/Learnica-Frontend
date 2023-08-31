@@ -24,6 +24,8 @@ import InstructorChallenge from "./components/instructor/instructorGuidDetails/I
 import InstNewCourseForm from "./components/instructor/InstNewCourseForm";
 import InstructorCourseSection from "./components/instructor/InstructorSections/InstCourseSection";
 import InstCoursesMainPage from "./components/instructor/InstructorCourses/InstCoursesMainPage";
+import InstSecLecture from "./components/instructor/InstructorLectures/InstSecLecture";
+import InstCourseSection from "./components/instructor/InstructorSections/InstCourseSection";
 
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
@@ -92,7 +94,11 @@ const RouterComponent = () => {
               />
               <Route
                 path="/instructorCourse/section/:id"
-                element={<InstructorCourseSection />}
+                element={<InstCourseSection />}
+              />
+              <Route
+                path="/instructorCourse/lectures/:courseId/:sectionId"
+                element={<InstSecLecture />}
               />
             </Route>
 

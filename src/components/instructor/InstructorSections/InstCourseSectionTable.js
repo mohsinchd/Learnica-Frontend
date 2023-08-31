@@ -3,7 +3,10 @@ import React from "react";
 import { Table, Dropdown } from "react-bootstrap";
 import { BsThreeDots } from "react-icons/bs";
 
-const InstCourseSectionTable = ({ sections }) => {
+import { Link } from "react-router-dom";
+
+const InstCourseSectionTable = ({ sections, courseId }) => {
+  console.log(sections);
   return (
     <>
       <h3 className="text-center">Course Sections</h3>
@@ -29,7 +32,13 @@ const InstCourseSectionTable = ({ sections }) => {
                       <BsThreeDots size={20} />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item>Add Lecture</Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link
+                          to={`/instructorCourse/lectures/${courseId}/${section._id}`}
+                        >
+                          Add Lecture
+                        </Link>
+                      </Dropdown.Item>
                       <Dropdown.Item>Edit Lecture</Dropdown.Item>
                       <Dropdown.Item>Delete section</Dropdown.Item>
                     </Dropdown.Menu>
