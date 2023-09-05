@@ -1,31 +1,44 @@
 import React from "react";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
+
+import { Link } from "react-router-dom";
+import Rating from "../SharedComponents/Rating";
 const DisplayCardView = ({ cardData, children }) => {
+  console.log(cardData);
   return (
     <Container className="mt-3 mb-3">
       <Card className="p-3">
         <h2>{children}</h2>
         <div className="card-container">
           <Row>
-            {cardData.map((card, index) => (
+            {cardData.map((card) => (
               <Col
-                key={index}
-                md={3}
+                key={card._id}
+                md={4}
                 style={{ marginBottom: "20px" }}
                 className="flex-center"
               >
                 <Card style={{ height: "100%" }}>
                   <Card.Img
-                    src={card.imageUrl}
+                    src={card.poster && card.poster.url}
                     variant="top"
-                    style={{ height: "200px", objectFit: "cover" }}
+                    style={{ height: 200, width: "100%" }}
                   />
                   <Card.Body>
                     <Card.Title>{card.title}</Card.Title>
-                    <Card.Text>{card.content}</Card.Text>
-                    <Button variant="success" className=" text-uppercase mb-1">
-                      Enroll
-                    </Button>
+                    <Card.Text>Price: ${card.price}</Card.Text>
+                    <Rating
+                      value={card.averageRating}
+                      text={`${card.numOfReviews} reviews`}
+                    />
+                    <Link to={`/courseDetail/${card._id}`}>
+                      <Button
+                        variant="success"
+                        className=" text-uppercase my-3"
+                      >
+                        View Details
+                      </Button>
+                    </Link>
                   </Card.Body>
                 </Card>
               </Col>

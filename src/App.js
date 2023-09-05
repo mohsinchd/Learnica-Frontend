@@ -26,6 +26,7 @@ import InstructorCourseSection from "./components/instructor/InstructorSections/
 import InstCoursesMainPage from "./components/instructor/InstructorCourses/InstCoursesMainPage";
 import InstSecLecture from "./components/instructor/InstructorLectures/InstSecLecture";
 import InstCourseSection from "./components/instructor/InstructorSections/InstCourseSection";
+import SelectedCourseDetail from "./pages/courseDetail/SelectedCourseDetail";
 
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
@@ -101,6 +102,10 @@ const RouterComponent = () => {
                 element={<InstSecLecture />}
               />
             </Route>
+            <Route
+              path="/courseDetail/:id"
+              element={<SelectedCourseDetail />}
+            />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

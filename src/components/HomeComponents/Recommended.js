@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { cardData } from "../../CourseData/recoData";
 import DisplayCardView from "./DisplayCardView";
 
-const Recommended = () => {
+const Recommended = ({ courses }) => {
   return (
-    <DisplayCardView cardData={cardData}>Recommended Course</DisplayCardView>
+    <div style={{ marginTop: "100px" }}>
+      <DisplayCardView cardData={courses}>Recommended Course</DisplayCardView>
+    </div>
   );
 };
 
