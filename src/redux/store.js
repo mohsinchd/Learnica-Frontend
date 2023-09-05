@@ -4,6 +4,7 @@ import userReducer from "./reducers/user/userSlice";
 import instructorReducer from "./reducers/instructor/instructorSlice";
 import courseSectionsReducer from "./reducers/courseSections/courseSectionsSlice";
 import courseLecturesReducer from "./reducers/courseLectures/courseLecturesSlice";
+import userSideCoursesReducer from "./reducers/userSideCourses/userSideCoursesSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     instructor: instructorReducer,
     courseSections: courseSectionsReducer,
     courseLectures: courseLecturesReducer,
+    userSideCourses: userSideCoursesReducer,
   },
 });
 
