@@ -14,9 +14,9 @@ const initialState = {
 
 export const getAllCourses = createAsyncThunk(
   "userSideCourses/get",
-  async (_, thunkAPI) => {
+  async (params, thunkAPI) => {
     try {
-      return await userSideCoursesService.getAllCourses();
+      return await userSideCoursesService.getAllCourses(params);
     } catch (error) {
       const message =
         error.response && error.response.data.message
