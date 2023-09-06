@@ -14,7 +14,7 @@ const BasicCourseDetail = ({ course }) => {
             <h1 className="text-white mb-2">{course.title}</h1>
             <div className="headline mb-3 ">
               The most advanced and modern course on the internet: master
-              required skills, and so much more.
+              required skills, and so much more sex.
             </div>
             <div className="mb-2">
               <Rating
