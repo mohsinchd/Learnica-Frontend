@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCourses } from "../../redux/reducers/userSideCourses/userSideCoursesSlice";
 import Loader from "../../components/SharedComponents/Loader";
 import Rating from "../../components/SharedComponents/Rating";
+import SearchByFilter from "./SearchByFilter";
 
 const SearchedCourses = () => {
   const [searchParams] = useSearchParams();
@@ -33,9 +34,11 @@ const SearchedCourses = () => {
             <p>Total Results : {courses.length}</p>
           </div>
           <Row style={{ marginTop: "50px" }}>
-            <Col md={2}>filters</Col>
+            <Col md={4}>
+              <SearchByFilter />
+            </Col>
 
-            <Col md={10}>
+            <Col md={8}>
               {courses.length === 0 ? (
                 <div> SORRY ! No Course exist ... 😊😊</div>
               ) : (
