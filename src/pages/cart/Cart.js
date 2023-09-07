@@ -9,11 +9,11 @@ const Cart = () => {
     <div style={{ marginTop: "150px" }}>
       <Container>
         <h2>Your Cart..</h2>
+        <h6>Total Courses : </h6>
         <Row>
-          <h6>Total Courses : </h6>
           <Col md={8}>
             <Card
-              className="  d-flex flex-row  mt-3 p-2 mb-5"
+              className="  d-flex flex-row  mt-3 p-2 "
               style={{ height: "fit-content" }}
             >
               <div className="d-flex ">
@@ -41,7 +41,7 @@ const Cart = () => {
               </div>
             </Card>
           </Col>
-          <Col md={4}>
+          <Col md={4} className="order-first order-md-last">
             <h2 className="text-center">Payment</h2>
             <p className="font-weight-900">Total : </p>
             <h4>$45.0</h4>
