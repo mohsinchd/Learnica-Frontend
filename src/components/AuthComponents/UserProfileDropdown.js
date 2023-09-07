@@ -68,7 +68,7 @@ const UserProfileDropdown = () => {
           Become Instructor
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={() => navigate("")}>
+        <Dropdown.Item onClick={() => navigate("/cart")}>
           Your Cart <span varient="outline-success">🛒</span>
         </Dropdown.Item>
         <Dropdown.Divider />
