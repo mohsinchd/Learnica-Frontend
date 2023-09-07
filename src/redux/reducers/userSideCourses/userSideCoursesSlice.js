@@ -10,6 +10,7 @@ const initialState = {
   successMessage: "",
   courses: [],
   courseDetails: null,
+  totalCourses: 0,
 };
 
 export const getAllCourses = createAsyncThunk(
@@ -68,6 +69,7 @@ const userSideCoursesSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.courses = action.payload.courses;
+        state.totalCourses = action.payload.noOfCourses;
         state.successMessage = "Fetched All the courses";
         state.errorMessage = "";
         state.courseDetails = null;
@@ -77,6 +79,7 @@ const userSideCoursesSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.courses = [];
+        state.totalCourses = 0;
         state.successMessage = "";
         state.errorMessage = action.payload;
         state.courseDetails = null;

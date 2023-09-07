@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-const PriceFilter = () => {
-  const [price, setPrice] = useState(10);
+const PriceFilter = ({ setPriceParam, passedPrice }) => {
+  console.log(passedPrice);
+
+  const [price, setPrice] = useState(passedPrice || 10);
 
   const handlePriceChange = (event) => {
     setPrice(event.target.value);
+  };
+
+  const submitPriceHandler = () => {
+    setPriceParam(price);
   };
 
   return (
@@ -19,6 +26,11 @@ const PriceFilter = () => {
         max={100}
         className="w-50"
       />
+      <div>
+        <Button onClick={submitPriceHandler} variant="success" size="sm">
+          Search By Price
+        </Button>
+      </div>
     </div>
   );
 };

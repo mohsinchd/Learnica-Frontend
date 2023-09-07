@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Rating from "../../components/SharedComponents/Rating";
 
-const StarFilter = () => {
-  const [selectedStar, setSelectedStar] = useState(null);
+const StarFilter = ({ setRatingParam, averageRating }) => {
+  const [selectedStar, setSelectedStar] = useState(averageRating || null);
 
   const handleCheckBoxChange = (value) => {
     setSelectedStar(value);
+    setRatingParam(value);
   };
 
   return (
     <div>
+      <h3>Ratings</h3>
       <Form>
-        Ratings...
         <Form.Check
           type="switch"
           id="custom-switch-1"

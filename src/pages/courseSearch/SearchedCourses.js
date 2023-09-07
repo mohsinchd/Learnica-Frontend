@@ -1,27 +1,91 @@
-import React, { useEffect } from "react";
-import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
-import { useSearchParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Card, ListGroup, Button } from "react-bootstrap";
+import {
+  useSearchParams,
+  Link,
+  useNavigate,
+  createSearchParams,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllCourses } from "../../redux/reducers/userSideCourses/userSideCoursesSlice";
 import Loader from "../../components/SharedComponents/Loader";
 import Rating from "../../components/SharedComponents/Rating";
 import SearchByFilter from "./SearchByFilter";
+import PaginationComponent from "./PaginationComponent";
 
 const SearchedCourses = () => {
   const [searchParams] = useSearchParams();
+
   let keyword = searchParams.get("keyword");
+  let averageRating = searchParams.get("averageRating");
+  let category = searchParams.get("category");
+  let price = searchParams.get("price");
+  let page = searchParams.get("page");
 
   const dispatch = useDispatch();
-  const { isLoading, courses } = useSelector((state) => state.userSideCourses);
+  const { isLoading, courses, totalCourses } = useSelector(
+    (state) => state.userSideCourses
+  );
+
+  const navigate = useNavigate();
 
   let parameters = {
     keyword,
+    averageRating,
+    price,
+    category,
+    page,
+  };
+
+  const setRatingParam = (value) => {
+    parameters.averageRating = value;
+    navigate({
+      pathname: "/search-courses",
+      search: `${createSearchParams(parameters)}`,
+    });
+  };
+
+  const setCategoryParam = (value) => {
+    parameters.category = value;
+    navigate({
+      pathname: "/search-courses",
+      search: `${createSearchParams(parameters)}`,
+    });
+  };
+
+  const setPriceParam = (value) => {
+    parameters.price = value;
+    navigate({
+      pathname: "/search-courses",
+      search: `${createSearchParams(parameters)}`,
+    });
+  };
+
+  const setPageParam = (value) => {
+    parameters.page = value;
+    navigate({
+      pathname: "/search-courses",
+      search: `${createSearchParams(parameters)}`,
+    });
+  };
+
+  const clearAllFilters = () => {
+    parameters.keyword = keyword;
+    parameters.category = "";
+    parameters.page = page;
+    parameters.averageRating = 0;
+    parameters.price = 10;
+
+    navigate({
+      pathname: "/search-courses",
+      search: `${createSearchParams(parameters)}`,
+    });
   };
 
   useEffect(() => {
     dispatch(getAllCourses(parameters));
-  }, [keyword]);
+  }, [keyword, averageRating, category, price, page]);
 
   return (
     <div style={{ marginTop: "150px" }}>
@@ -29,16 +93,38 @@ const SearchedCourses = () => {
         <Loader />
       ) : (
         <Container>
+          <Link to="/">
+            <Button variant="success" size="sm" className="mb-4">
+              Go Back
+            </Button>
+          </Link>
           <div className="d-flex justify-content-between">
             <h5>You Searched : {keyword}</h5>
-            <p>Total Results : {courses.length}</p>
+            <div>
+              <p>Total Available Courses: {totalCourses}</p>
+              <p>Matching Results : {courses.length}</p>
+            </div>
           </div>
           <Row style={{ marginTop: "50px" }}>
-            <Col md={4}>
-              <SearchByFilter />
+            <Col md={3}>
+              <SearchByFilter
+                setRatingParam={setRatingParam}
+                setPriceParam={setPriceParam}
+                setCategoryParam={setCategoryParam}
+                averageRating={averageRating}
+                category={category}
+                price={price}
+              />
+              <Button
+                onClick={clearAllFilters}
+                variant="success"
+                className="mt-2"
+              >
+                Clear filters
+              </Button>
             </Col>
 
-            <Col md={8}>
+            <Col md={9}>
               {courses.length === 0 ? (
                 <div> SORRY ! No Course exist ... 😊😊</div>
               ) : (
@@ -85,6 +171,13 @@ const SearchedCourses = () => {
                     );
                   })}
                 </div>
+              )}
+              {totalCourses > 6 && (
+                <PaginationComponent
+                  courses={totalCourses}
+                  page={page}
+                  setPageParam={setPageParam}
+                />
               )}
             </Col>
           </Row>

@@ -39,6 +39,10 @@ const Navigationbar = () => {
 
     let param = {
       keyword,
+      price: 10,
+      averageRating: 0,
+      category: "",
+      page: 1,
     };
 
     navigate({

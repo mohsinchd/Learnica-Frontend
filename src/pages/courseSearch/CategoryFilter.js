@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-const CategoryFilter = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+
+const CategoryFilter = ({ setCategoryParam, category }) => {
+  const [selectedCategory, setSelectedCategory] = useState(category || null);
   const handleSelectedCategory = (value) => {
     setSelectedCategory(value);
+    setCategoryParam(value);
   };
+
   return (
     <div className="mt-3">
       <h4>Category</h4>
