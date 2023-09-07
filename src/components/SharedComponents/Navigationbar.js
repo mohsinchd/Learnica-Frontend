@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -9,14 +9,18 @@ import { SiSololearn } from "react-icons/si";
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../../redux/reducers/auth/authSlice";
 import { toast } from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, createSearchParams } from "react-router-dom";
 import UserProfileDropdown from "../AuthComponents/UserProfileDropdown";
 import SmallLoader from "./SmallLoader";
 
 const Navigationbar = () => {
+  const [keyword, setKeyword] = useState("");
+
   const { user, logoutMessage, isLoading } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (logoutMessage) {
@@ -25,6 +29,28 @@ const Navigationbar = () => {
       dispatch(reset());
     }
   }, [logoutMessage, dispatch]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    if (!keyword) {
+      return toast.error("Please Enter your search keyword before searching.");
+    }
+
+    let param = {
+      keyword,
+      price: 10,
+      averageRating: 0,
+      category: "",
+      page: 1,
+    };
+
+    navigate({
+      pathname: "/search-courses",
+      search: `${createSearchParams(param)}`,
+    });
+    setKeyword("");
+  };
 
   return (
     <>
@@ -59,14 +85,24 @@ const Navigationbar = () => {
                 <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form className="d-flex me-2 mb-2">
+            <Form
+              onSubmit={(e) => e.preventDefault()}
+              className="d-flex me-2 mb-2"
+            >
               <Form.Control
                 className="text-dark search-input"
                 type="search"
                 size="sm"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
                 placeholder="Search"
               />
-              <Button variant="outline-success" size="sm">
+              <Button
+                onClick={submitHandler}
+                variant="outline-success"
+                size="sm"
+                type="submit"
+              >
                 Search
               </Button>
             </Form>
