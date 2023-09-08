@@ -103,6 +103,7 @@ const RouterComponent = () => {
                 path="/instructorCourse/lectures/:courseId/:sectionId"
                 element={<InstSecLecture />}
               />
+              <Route path="/cart" element={<Cart />} />
             </Route>
             <Route
               path="/courseDetail/:id"
@@ -110,7 +111,7 @@ const RouterComponent = () => {
             />
 
             <Route path="/search-courses" element={<SearchedCourses />} />
-            <Route path="/cart" element={<Cart />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

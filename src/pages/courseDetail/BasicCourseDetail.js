@@ -1,8 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../redux/reducers/cart/cartSlice";
+
 import Rating from "../../components/SharedComponents/Rating";
 
 const BasicCourseDetail = ({ course }) => {
+  const { user } = useSelector((state) => state.auth);
+
+  const { isLoading, successMessage, isSuccess, isError, errorMessage } =
+    useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const addToCartHandler = () => {
+    if (!user) {
+      return navigate("/Login");
+    }
+
+    dispatch(addToCart(course._id));
+  };
+
+  useEffect(() => {
+    if (isSuccess && successMessage) {
+      toast.success(successMessage);
+      navigate("/cart");
+    }
+
+    if (isError && errorMessage) {
+      toast.error(errorMessage);
+    }
+  }, [isSuccess, successMessage, isError, errorMessage]);
+
   return (
     <div
       className=" text-white"
@@ -31,16 +65,28 @@ const BasicCourseDetail = ({ course }) => {
               <Card.Img variant="top" src={course.poster.url} />
               <Card.Body className="">
                 <h1>${course.price}</h1>
-                <Button
-                  variant="outline-success"
-                  className="w-100"
-                  style={{ marginBottom: "3px" }}
-                >
-                  Add to Cart
-                </Button>
-                <Button variant="outline-success" className="w-100">
-                  Buy Now
-                </Button>
+                {user && user._id === course.instructor._id ? (
+                  <>
+                    <h5>
+                      Note: You are the creator of this course you can't buy.
+                    </h5>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      variant="outline-success"
+                      className="w-100"
+                      style={{ marginBottom: "3px" }}
+                      onClick={addToCartHandler}
+                    >
+                      Add to Cart
+                    </Button>
+                    <Button variant="outline-success" className="w-100">
+                      Buy Now
+                    </Button>
+                  </>
+                )}
+
                 <span>30 days-money back gurantee</span>
               </Card.Body>
             </Card>
