@@ -28,6 +28,7 @@ import InstSecLecture from "./components/instructor/InstructorLectures/InstSecLe
 import InstCourseSection from "./components/instructor/InstructorSections/InstCourseSection";
 import SelectedCourseDetail from "./pages/courseDetail/SelectedCourseDetail";
 import SearchedCourses from "./pages/courseSearch/SearchedCourses";
+import Cart from "./pages/cart/Cart";
 
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
@@ -102,6 +103,7 @@ const RouterComponent = () => {
                 path="/instructorCourse/lectures/:courseId/:sectionId"
                 element={<InstSecLecture />}
               />
+              <Route path="/cart" element={<Cart />} />
             </Route>
             <Route
               path="/courseDetail/:id"
