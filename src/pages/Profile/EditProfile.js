@@ -32,15 +32,11 @@ const EditProfile = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Container>
+        <Container className="w-50 m-auto authWidth">
           <Row>
-            <Col md={4}>
+            <Col>
               <h1>User Profile</h1>
               <UserProfile user={user} />
-            </Col>
-            <Col md={8}>
-              <h1>Enrolled Courses</h1>
-              <EnrolledCourses courses={user.enrolledCourses} />
             </Col>
           </Row>
         </Container>

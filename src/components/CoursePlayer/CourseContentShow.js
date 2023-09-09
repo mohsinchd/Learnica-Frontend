@@ -1,46 +1,37 @@
 import React from "react";
-import { courseData } from "../../CourseData/courseData";
 
 import { VscDebugContinue } from "react-icons/vsc";
-import { Accordion } from "react-bootstrap";
+import { Accordion, ListGroup } from "react-bootstrap";
 
-const CourseContentShow = ({ onVideoSelect }) => {
-  const handleVideoPath = (videoPath) => {
-    onVideoSelect(videoPath);
+const CourseContentShow = ({ course, onVideoSelect }) => {
+  const selectVideoHandler = (url) => {
+    onVideoSelect(url);
   };
 
-  const data2 = courseData.map((section, index) => {
-    return (
-      <Accordion defaultActiveKey="0">
-        <Accordion.Item eventKey={index}>
-          <Accordion.Header>{section.secName}</Accordion.Header>
-          {section.secContent.map((item, itemIndex) => {
-            return (
-              <>
-                <div key={itemIndex}>
-                  {Object.keys(item).map((property, propertyIndex) => {
-                    return (
-                      <Accordion.Body key={propertyIndex}>
-                        <p
-                          style={{ cursor: "pointer" }}
-                          onClick={() => handleVideoPath(item[property])}
-                        >
-                          <VscDebugContinue className="mx-1" />
-                          {property}
-                        </p>
-                      </Accordion.Body>
-                    );
-                  })}
-                </div>
-              </>
-            );
-          })}
-        </Accordion.Item>
-      </Accordion>
-    );
-  });
-
-  return <div>{data2}</div>;
+  return (
+    <div>
+      {course.sections.map((section) => (
+        <Accordion key={section._id}>
+          <Accordion.Header>{section.title}</Accordion.Header>
+          <Accordion.Body>
+            <ListGroup variant="flush">
+              {section.lectures.length === 0 && <p>No Lectures.</p>}
+              {section.lectures.map((lecture) => (
+                <ListGroup.Item
+                  key={lecture._id}
+                  onClick={() => selectVideoHandler(lecture.video.url)}
+                  className="py-3 pointer hover"
+                >
+                  <VscDebugContinue className="mx-3" />
+                  {lecture.title}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </Accordion.Body>
+        </Accordion>
+      ))}
+    </div>
+  );
 };
 
 export default CourseContentShow;

@@ -100,6 +100,10 @@ a {
   cursor: pointer;
 }
 
+.hover:hover {
+  background-color: #ccc;
+}
+
 #inst-course-table-dropdown::after {
   display: none;
 }

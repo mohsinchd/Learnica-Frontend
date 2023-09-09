@@ -19,9 +19,41 @@ const getCourseDetails = async (id) => {
   return data;
 };
 
+const getAllEnrolledCourses = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const { data } = await axios.get(
+    `${API_URL}/api/v1/user/enrolledCourses`,
+    config
+  );
+
+  return data;
+};
+
+const getEnrolledCourseDetails = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const { data } = await axios.get(
+    `${API_URL}/api/v1/user/enrolledCourse/${id}`,
+    config
+  );
+
+  return data;
+};
+
 const userSideCoursesService = {
   getAllCourses,
   getCourseDetails,
+  getAllEnrolledCourses,
+  getEnrolledCourseDetails,
 };
 
 export default userSideCoursesService;

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo, reset } from "../../redux/reducers/user/userSlice";
 
 import Loader from "../../components/SharedComponents/Loader";
-import EnrolledCourses from "../../components/ProfileComponents/EnrolledCourses";
+
 import ProfilePhotoUpdate from "../../components/ProfileComponents/ProfilePhotoUpdate";
 const ProfilePhoto = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
@@ -31,16 +31,11 @@ const ProfilePhoto = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Container>
+        <Container className="w-50 m-auto authWidth">
           <Row>
-            <Col md={4}>
+            <Col>
               <h1>Profile Picture</h1>
-
               <ProfilePhotoUpdate />
-            </Col>
-            <Col md={8}>
-              <h1>Enrolled Courses</h1>
-              <EnrolledCourses courses={user.enrolledCourses} />
             </Col>
           </Row>
         </Container>

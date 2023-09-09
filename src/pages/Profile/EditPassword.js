@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 import Loader from "../../components/SharedComponents/Loader";
-import EnrolledCourses from "../../components/ProfileComponents/EnrolledCourses";
+
 import PasswordUpdate from "../../components/ProfileComponents/PasswordUpdate";
 import { reset } from "../../redux/reducers/user/userSlice";
 
@@ -33,15 +33,11 @@ const EditPassword = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Container>
+        <Container className="w-50 m-auto authWidth">
           <Row>
-            <Col md={4}>
+            <Col>
               <h1>Update Password</h1>
               <PasswordUpdate />
-            </Col>
-            <Col md={8}>
-              <h1>Enrolled Courses</h1>
-              <EnrolledCourses courses={user.enrolledCourses} />
             </Col>
           </Row>
         </Container>

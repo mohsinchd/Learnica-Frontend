@@ -57,10 +57,10 @@ const UserProfileDropdown = () => {
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/profile-photo")}>
-          profile photo
+          Profile photo
           <Dropdown.Divider />
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => navigate("/profile-photo")}>
+        <Dropdown.Item onClick={() => navigate("/user-enrolledCourses")}>
           Enrolled status
         </Dropdown.Item>
         <Dropdown.Divider />
