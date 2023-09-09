@@ -30,6 +30,8 @@ import SelectedCourseDetail from "./pages/courseDetail/SelectedCourseDetail";
 import SearchedCourses from "./pages/courseSearch/SearchedCourses";
 import Cart from "./pages/cart/Cart";
 import PaymentSuccess from "./pages/Payment/PaymentSuccess";
+import EnrolledCoursePlayer from "./pages/enrolledPage/EnrolledCoursePlayer";
+import UserEnrolledCourses from "./pages/Profile/UserEnrolledCourses";
 
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
@@ -105,6 +107,17 @@ const RouterComponent = () => {
                 element={<InstSecLecture />}
               />
               <Route path="/cart" element={<Cart />} />
+
+              <Route
+                path="/user-enrolledCourses"
+                element={<UserEnrolledCourses />}
+              />
+
+              <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+              <Route
+                path="/user-enrolledCourses/:id"
+                element={<EnrolledCoursePlayer />}
+              />
             </Route>
             <Route
               path="/courseDetail/:id"
@@ -114,7 +127,6 @@ const RouterComponent = () => {
             <Route path="/search-courses" element={<SearchedCourses />} />
 
             <Route path="*" element={<NotFound />} />
-            <Route path="/paymentsuccess" element={<PaymentSuccess />} />
           </Routes>
         </main>
       </div>
