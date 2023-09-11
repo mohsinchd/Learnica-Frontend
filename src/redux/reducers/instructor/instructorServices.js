@@ -18,6 +18,23 @@ const createNewCourse = async (courseData, token) => {
   return data;
 };
 
+const updateCourse = async (courseData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.put(
+    `${API_URL}/api/v1/course/${courseData.id}`,
+    courseData.courseData,
+    config
+  );
+
+  console.log(data);
+
+  return data;
+};
+
 const getInstructorCourses = async (token) => {
   const config = {
     headers: {
@@ -35,6 +52,7 @@ const getInstructorCourses = async (token) => {
 const instructorService = {
   createNewCourse,
   getInstructorCourses,
+  updateCourse,
 };
 
 export default instructorService;
