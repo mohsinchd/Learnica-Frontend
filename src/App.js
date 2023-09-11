@@ -32,6 +32,7 @@ import Cart from "./pages/cart/Cart";
 import PaymentSuccess from "./pages/Payment/PaymentSuccess";
 import EnrolledCoursePlayer from "./pages/enrolledPage/EnrolledCoursePlayer";
 import UserEnrolledCourses from "./pages/Profile/UserEnrolledCourses";
+import InstructorSectionEdit from "./components/instructor/InstructorCourses/InstructorSectionEdit";
 
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
@@ -101,6 +102,10 @@ const RouterComponent = () => {
               <Route
                 path="/instructorCourse/section/:id"
                 element={<InstCourseSection />}
+              />
+              <Route
+                path="/instructorCourse/section-edit"
+                element={<InstructorSectionEdit />}
               />
               <Route
                 path="/instructorCourse/lectures/:courseId/:sectionId"
