@@ -87,6 +87,7 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isSuccess = false;
       state.message = "";
+      state.user = null;
     },
   },
   extraReducers: (builder) => {

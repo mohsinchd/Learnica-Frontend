@@ -14,6 +14,8 @@ const API_URL = process.env.REACT_APP_API_URL;
 const BasicCourseDetail = ({ course }) => {
   const { user } = useSelector((state) => state.auth);
 
+  const { user: userInfo } = useSelector((state) => state.user);
+
   const { isLoading, successMessage, isSuccess, isError, errorMessage } =
     useSelector((state) => state.cart);
 
@@ -31,41 +33,44 @@ const BasicCourseDetail = ({ course }) => {
 
   const paymentHandler = async (price) => {
     if (!user) {
-      return navigate("/Login");
+      return navigate(`/Login`);
     }
+    try {
+      const {
+        data: { apiKey },
+      } = await axios.get(`${API_URL}/api/v1/payment`);
 
-    const {
-      data: { apiKey },
-    } = await axios.get(`${API_URL}/api/v1/payment`);
+      const {
+        data: { order },
+      } = await axios.post(`${API_URL}/api/v1/payment`, { amount: price });
 
-    const {
-      data: { order },
-    } = await axios.post(`${API_URL}/api/v1/payment`, { amount: price });
+      var options = {
+        key: apiKey, // Enter the Key ID generated from the Dashboard
+        amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "USD",
+        name: "Learnica",
+        description: "Test Transaction",
+        image: user.avatar.url,
+        order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        callback_url: `http://localhost:5000/api/v1/payment/paymentVerification?courseId=${course._id}&userId=${user._id}`,
+        prefill: {
+          name: user.name,
+          email: user.email,
+          contact: user.email,
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3B3B3B",
+        },
+      };
+      var rzp1 = new window.Razorpay(options);
 
-    var options = {
-      key: apiKey, // Enter the Key ID generated from the Dashboard
-      amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currency: "USD",
-      name: "Learnica",
-      description: "Test Transaction",
-      image: user.avatar.url,
-      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: `http://localhost:5000/api/v1/payment/paymentVerification?courseId=${course._id}&userId=${user._id}`,
-      prefill: {
-        name: user.name,
-        email: user.email,
-        contact: "9000090000",
-      },
-      notes: {
-        address: "Razorpay Corporate Office",
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
-    var rzp1 = new window.Razorpay(options);
-
-    rzp1.open();
+      rzp1.open();
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
 
   // side effects
@@ -114,6 +119,11 @@ const BasicCourseDetail = ({ course }) => {
                       Note: You are the creator of this course you can't buy.
                     </h5>
                   </>
+                ) : userInfo &&
+                  userInfo.enrolledCourses.find(
+                    (c) => c.toString() === course._id.toString()
+                  ) ? (
+                  <h5>You are already enrolled in this course.</h5>
                 ) : (
                   <>
                     <Button

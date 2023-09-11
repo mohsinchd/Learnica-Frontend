@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducers/auth/authSlice"; // Import your logout action
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { getUserInfo } from "../../redux/reducers/user/userSlice";
+import { getUserInfo, reset } from "../../redux/reducers/user/userSlice";
 import SmallLoader from "../SharedComponents/SmallLoader";
 
 const UserProfileDropdown = () => {
@@ -14,13 +14,14 @@ const UserProfileDropdown = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(reset());
   };
 
   useEffect(() => {
     dispatch(getUserInfo());
   }, []);
 
-  return isLoading ? (
+  return isLoading || !user ? (
     <SmallLoader />
   ) : (
     <>

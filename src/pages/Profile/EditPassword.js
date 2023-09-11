@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/SharedComponents/Loader";
 
 import PasswordUpdate from "../../components/ProfileComponents/PasswordUpdate";
-import { reset } from "../../redux/reducers/user/userSlice";
+import { getUserInfo, reset } from "../../redux/reducers/user/userSlice";
 
 const EditPassword = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
@@ -26,6 +26,8 @@ const EditPassword = () => {
       toast.success(message);
       dispatch(reset());
     }
+
+    dispatch(getUserInfo());
   }, [isError, isSuccess, message]);
 
   return (
