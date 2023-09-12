@@ -19,6 +19,7 @@ const InstCourseSection = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
+  const [edit, setEdit] = useState(false);
 
   const {
     isLoading,
@@ -37,6 +38,10 @@ const InstCourseSection = () => {
 
     dispatch(createSection({ title, courseId: id }));
   };
+  const editTitleHanlder = (id) => {
+    setEdit(true);
+    console.log(id);
+  };
 
   useEffect(() => {
     if (isSuccess && successMessage) {
@@ -53,7 +58,7 @@ const InstCourseSection = () => {
   return (
     <div style={{ marginTop: "150px" }}>
       <Container>
-        <h2>Add Section </h2>
+        <h2>{!edit ? "Add Section" : "Edit section"} </h2>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mt-3" controlId="title">
             <Form.Label>Title of Your Section </Form.Label>
@@ -65,16 +70,21 @@ const InstCourseSection = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
               <Button type="submit" variant="success">
-                Add
+                {!edit ? "Add" : "Edit"}
               </Button>
             </div>
           </Form.Group>
         </Form>
+
         <div className="my-5">
           {isLoading ? (
             <Loader />
           ) : (
-            <InstCourseSectionTable sections={sections} courseId={id} />
+            <InstCourseSectionTable
+              sections={sections}
+              courseId={id}
+              editSection={editTitleHanlder}
+            />
           )}
         </div>
 

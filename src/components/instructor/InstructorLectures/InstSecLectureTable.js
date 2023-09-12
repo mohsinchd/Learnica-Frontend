@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
 
-const InstSecLectureTable = ({ lectures }) => {
+const InstSecLectureTable = ({ lectures, editLecture }) => {
   return (
     <>
       {lectures.length === 0 ? (
@@ -17,7 +17,12 @@ const InstSecLectureTable = ({ lectures }) => {
               <tr key={lecture.id}>
                 <td>{lecture.title}</td>
                 <td>
-                  <Button variant="success">EDIT</Button>
+                  <Button
+                    variant="success"
+                    onClick={() => editLecture(lecture.id)}
+                  >
+                    EDIT
+                  </Button>
                 </td>
               </tr>
             ))}

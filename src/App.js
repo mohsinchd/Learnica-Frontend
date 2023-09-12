@@ -104,7 +104,7 @@ const RouterComponent = () => {
                 element={<InstCourseSection />}
               />
               <Route
-                path="/instructorCourse/section-edit/:id"
+                path="/instructorCourse/course-edit/:id"
                 element={<InstructorSectionEdit />}
               />
               <Route

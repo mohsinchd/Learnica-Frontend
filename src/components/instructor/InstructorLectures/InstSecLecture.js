@@ -18,6 +18,7 @@ const InstSecLecture = () => {
   const [title, setTitle] = useState("");
   const [isVideoFile, setIsVideoFile] = useState("");
   const [video, setVideo] = useState("");
+  const [editLecture, setEditLecture] = useState(false);
 
   const { courseId, sectionId } = useParams();
 
@@ -59,6 +60,10 @@ const InstSecLecture = () => {
     dispatch(createLecture(data));
   };
 
+  const editLectureHandler = (id) => {
+    setEditLecture(true);
+  };
+
   useEffect(() => {
     if (isSuccess && successMessage) {
       toast.success(successMessage);
@@ -82,10 +87,14 @@ const InstSecLecture = () => {
             {isLoading ? (
               <Loader />
             ) : (
-              <InstSecLectureTable lectures={lectures} />
+              <InstSecLectureTable
+                lectures={lectures}
+                editLecture={editLectureHandler}
+              />
             )}
           </Col>
           <Col md={4}>
+            <h2>{!editLecture ? "Add Lecture" : "Edit Lecture"} </h2>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3" controlId="forTheTitle">
                 <Form.Label>Title </Form.Label>
@@ -112,7 +121,7 @@ const InstSecLecture = () => {
                 </div>
               )}
               <Button type="submit" variant="success" className="mt-3">
-                Add Lecture
+                {!editLecture ? "Add Lecture" : "Edit"}
               </Button>
             </Form>
           </Col>
