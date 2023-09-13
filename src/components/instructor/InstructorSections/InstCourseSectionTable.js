@@ -5,8 +5,10 @@ import { BsThreeDots } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
-const InstCourseSectionTable = ({ sections, courseId }) => {
-  console.log(sections);
+const InstCourseSectionTable = ({ sections, courseId, editSection }) => {
+  const editSectionTitle = (id, title) => {
+    editSection(id, title);
+  };
   return (
     <>
       <h3 className="text-center">Course Sections</h3>
@@ -39,7 +41,13 @@ const InstCourseSectionTable = ({ sections, courseId }) => {
                           Add Lecture
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>Edit Lecture</Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={() =>
+                          editSectionTitle(section._id, section.title)
+                        }
+                      >
+                        Edit Section
+                      </Dropdown.Item>
                       <Dropdown.Item>Delete section</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>

@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createSection,
+  editSection,
   getSections,
   reset,
 } from "../../../redux/reducers/courseSections/courseSectionsSlice";
@@ -19,6 +20,8 @@ const InstCourseSection = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [sectionId, setSectionId] = useState("");
 
   const {
     isLoading,
@@ -38,6 +41,19 @@ const InstCourseSection = () => {
     dispatch(createSection({ title, courseId: id }));
   };
 
+  const editTitleHanlder = (id, title) => {
+    setTitle(title);
+    setEdit(true);
+    setSectionId(id);
+  };
+
+  const submitEditHandler = (event) => {
+    event.preventDefault();
+    dispatch(editSection({ title, courseId: id, sectionId: sectionId }));
+    setTitle("");
+    setEdit(false);
+  };
+
   useEffect(() => {
     if (isSuccess && successMessage) {
       toast.success(successMessage);
@@ -53,8 +69,12 @@ const InstCourseSection = () => {
   return (
     <div style={{ marginTop: "150px" }}>
       <Container>
-        <h2>Add Section </h2>
-        <Form onSubmit={submitHandler}>
+        <h2>{!edit ? "Add Section" : "Edit section"} </h2>
+        <Form
+          onSubmit={(event) =>
+            !edit ? submitHandler(event) : submitEditHandler(event)
+          }
+        >
           <Form.Group className="mt-3" controlId="title">
             <Form.Label>Title of Your Section </Form.Label>
             <div className="d-flex align-items-center">
@@ -65,16 +85,21 @@ const InstCourseSection = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
               <Button type="submit" variant="success">
-                Add
+                {!edit ? "Add" : "Edit"}
               </Button>
             </div>
           </Form.Group>
         </Form>
+
         <div className="my-5">
           {isLoading ? (
             <Loader />
           ) : (
-            <InstCourseSectionTable sections={sections} courseId={id} />
+            <InstCourseSectionTable
+              sections={sections}
+              courseId={id}
+              editSection={editTitleHanlder}
+            />
           )}
         </div>
 

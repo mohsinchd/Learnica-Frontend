@@ -12,12 +12,15 @@ import {
   createLecture,
   reset,
   getLectures,
+  editLectureThunk,
 } from "../../../redux/reducers/courseLectures/courseLecturesSlice";
 
 const InstSecLecture = () => {
   const [title, setTitle] = useState("");
   const [isVideoFile, setIsVideoFile] = useState("");
   const [video, setVideo] = useState("");
+  const [editLecture, setEditLecture] = useState(false);
+  const [lectureId, setLectureId] = useState("");
 
   const { courseId, sectionId } = useParams();
 
@@ -59,6 +62,35 @@ const InstSecLecture = () => {
     dispatch(createLecture(data));
   };
 
+  const editLectureHandler = (id, title) => {
+    console.log(id);
+    setEditLecture(true);
+    setLectureId(id);
+    setTitle(title);
+  };
+
+  const submitEditLecture = (event) => {
+    event.preventDefault();
+
+    const lectureData = new FormData();
+
+    lectureData.append("title", title);
+    lectureData.append("file", video);
+
+    let data = {
+      ids: {
+        courseId,
+        sectionId,
+        lectureId,
+      },
+      lectureData,
+    };
+
+    dispatch(editLectureThunk(data));
+    setTitle("");
+    setEditLecture(false);
+  };
+
   useEffect(() => {
     if (isSuccess && successMessage) {
       toast.success(successMessage);
@@ -82,11 +114,19 @@ const InstSecLecture = () => {
             {isLoading ? (
               <Loader />
             ) : (
-              <InstSecLectureTable lectures={lectures} />
+              <InstSecLectureTable
+                lectures={lectures}
+                editLecture={editLectureHandler}
+              />
             )}
           </Col>
           <Col md={4}>
-            <Form onSubmit={submitHandler}>
+            <h2>{!editLecture ? "Add Lecture" : "Edit Lecture"} </h2>
+            <Form
+              onSubmit={(event) =>
+                !editLecture ? submitHandler(event) : submitEditLecture(event)
+              }
+            >
               <Form.Group className="mb-3" controlId="forTheTitle">
                 <Form.Label>Title </Form.Label>
                 <Form.Control
@@ -112,7 +152,7 @@ const InstSecLecture = () => {
                 </div>
               )}
               <Button type="submit" variant="success" className="mt-3">
-                Add Lecture
+                {!editLecture ? "Add Lecture" : "Edit"}
               </Button>
             </Form>
           </Col>

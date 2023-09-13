@@ -27,6 +27,23 @@ export const createSection = createAsyncThunk(
   }
 );
 
+export const editSection = createAsyncThunk(
+  "courseSection/edit",
+  async (data, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await courseSectionService.editSection(data, token);
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(message);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const getSections = createAsyncThunk(
   "courseSection/get",
   async (data, thunkAPI) => {
@@ -85,6 +102,23 @@ const courseSectionsSlice = createSlice({
       })
       .addCase(getSections.rejected, (state, action) => {
         state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload;
+      })
+      .addCase(editSection.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editSection.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.successMessage = action.payload.message;
+        state.isError = false;
+        state.errorMessage = "";
+      })
+      .addCase(editSection.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.successMessage = "";
         state.isError = true;
         state.errorMessage = action.payload;
       });

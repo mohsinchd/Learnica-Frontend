@@ -3,7 +3,7 @@ import { Button, Dropdown, Table } from "react-bootstrap";
 import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const InstCoursesTable = ({ courses }) => {
+const InstCoursesTable = ({ courses, onDelete }) => {
   return (
     <Table striped bordered hover responsive>
       <thead>
@@ -32,15 +32,17 @@ const InstCoursesTable = ({ courses }) => {
                 <Dropdown.Menu>
                   <Dropdown.Item>
                     <Link to={`/instructorCourse/section/${course._id}`}>
-                      Add Sections
+                      Add Section
                     </Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to={`/instructorCourse/section-edit/${course._id}`}>
-                      Edit section
+                    <Link to={`/instructorCourse/course-edit/${course._id}`}>
+                      Edit Course
                     </Link>
                   </Dropdown.Item>
-                  <Dropdown.Item>Delete Course</Dropdown.Item>
+                  <Dropdown.Item onClick={() => onDelete(course._id)}>
+                    Delete Course
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </td>

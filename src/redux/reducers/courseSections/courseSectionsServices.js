@@ -30,9 +30,25 @@ const getAllSections = async (sectionData, token) => {
   return data;
 };
 
+const editSection = async (sectionData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.put(
+    `${API_URL}/api/v1/section/${sectionData.courseId}/${sectionData.sectionId}`,
+    { title: sectionData.title },
+    config
+  );
+
+  return data;
+};
+
 const courseSectionService = {
   createNewSection,
   getAllSections,
+  editSection,
 };
 
 export default courseSectionService;
