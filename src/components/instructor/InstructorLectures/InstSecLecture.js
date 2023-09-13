@@ -12,6 +12,7 @@ import {
   createLecture,
   reset,
   getLectures,
+  editLectureThunk,
 } from "../../../redux/reducers/courseLectures/courseLecturesSlice";
 
 const InstSecLecture = () => {
@@ -19,6 +20,7 @@ const InstSecLecture = () => {
   const [isVideoFile, setIsVideoFile] = useState("");
   const [video, setVideo] = useState("");
   const [editLecture, setEditLecture] = useState(false);
+  const [lectureId, setLectureId] = useState("");
 
   const { courseId, sectionId } = useParams();
 
@@ -60,8 +62,33 @@ const InstSecLecture = () => {
     dispatch(createLecture(data));
   };
 
-  const editLectureHandler = (id) => {
+  const editLectureHandler = (id, title) => {
+    console.log(id);
     setEditLecture(true);
+    setLectureId(id);
+    setTitle(title);
+  };
+
+  const submitEditLecture = (event) => {
+    event.preventDefault();
+
+    const lectureData = new FormData();
+
+    lectureData.append("title", title);
+    lectureData.append("file", video);
+
+    let data = {
+      ids: {
+        courseId,
+        sectionId,
+        lectureId,
+      },
+      lectureData,
+    };
+
+    dispatch(editLectureThunk(data));
+    setTitle("");
+    setEditLecture(false);
   };
 
   useEffect(() => {
@@ -95,7 +122,11 @@ const InstSecLecture = () => {
           </Col>
           <Col md={4}>
             <h2>{!editLecture ? "Add Lecture" : "Edit Lecture"} </h2>
-            <Form onSubmit={submitHandler}>
+            <Form
+              onSubmit={(event) =>
+                !editLecture ? submitHandler(event) : submitEditLecture(event)
+              }
+            >
               <Form.Group className="mb-3" controlId="forTheTitle">
                 <Form.Label>Title </Form.Label>
                 <Form.Control

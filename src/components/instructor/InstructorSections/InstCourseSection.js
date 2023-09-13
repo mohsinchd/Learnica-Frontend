@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createSection,
+  editSection,
   getSections,
   reset,
 } from "../../../redux/reducers/courseSections/courseSectionsSlice";
@@ -20,6 +21,7 @@ const InstCourseSection = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [edit, setEdit] = useState(false);
+  const [sectionId, setSectionId] = useState("");
 
   const {
     isLoading,
@@ -38,9 +40,18 @@ const InstCourseSection = () => {
 
     dispatch(createSection({ title, courseId: id }));
   };
-  const editTitleHanlder = (id) => {
+
+  const editTitleHanlder = (id, title) => {
+    setTitle(title);
     setEdit(true);
-    console.log(id);
+    setSectionId(id);
+  };
+
+  const submitEditHandler = (event) => {
+    event.preventDefault();
+    dispatch(editSection({ title, courseId: id, sectionId: sectionId }));
+    setTitle("");
+    setEdit(false);
   };
 
   useEffect(() => {
@@ -59,7 +70,11 @@ const InstCourseSection = () => {
     <div style={{ marginTop: "150px" }}>
       <Container>
         <h2>{!edit ? "Add Section" : "Edit section"} </h2>
-        <Form onSubmit={submitHandler}>
+        <Form
+          onSubmit={(event) =>
+            !edit ? submitHandler(event) : submitEditHandler(event)
+          }
+        >
           <Form.Group className="mt-3" controlId="title">
             <Form.Label>Title of Your Section </Form.Label>
             <div className="d-flex align-items-center">

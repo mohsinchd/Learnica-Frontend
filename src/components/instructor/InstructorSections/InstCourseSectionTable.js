@@ -6,8 +6,8 @@ import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const InstCourseSectionTable = ({ sections, courseId, editSection }) => {
-  const editSectionTitle = (id) => {
-    editSection(id);
+  const editSectionTitle = (id, title) => {
+    editSection(id, title);
   };
   return (
     <>
@@ -42,9 +42,11 @@ const InstCourseSectionTable = ({ sections, courseId, editSection }) => {
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item
-                        onClick={() => editSectionTitle(section._id)}
+                        onClick={() =>
+                          editSectionTitle(section._id, section.title)
+                        }
                       >
-                        Edit Lecture
+                        Edit Section
                       </Dropdown.Item>
                       <Dropdown.Item>Delete section</Dropdown.Item>
                     </Dropdown.Menu>

@@ -3,7 +3,7 @@ import { Button, Dropdown, Table } from "react-bootstrap";
 import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const InstCoursesTable = ({ courses }) => {
+const InstCoursesTable = ({ courses, onDelete }) => {
   return (
     <Table striped bordered hover responsive>
       <thead>
@@ -40,7 +40,9 @@ const InstCoursesTable = ({ courses }) => {
                       Edit Course
                     </Link>
                   </Dropdown.Item>
-                  <Dropdown.Item>Delete Course</Dropdown.Item>
+                  <Dropdown.Item onClick={() => onDelete(course._id)}>
+                    Delete Course
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </td>

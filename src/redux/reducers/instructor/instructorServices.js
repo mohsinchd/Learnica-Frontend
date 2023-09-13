@@ -35,6 +35,17 @@ const updateCourse = async (courseData, token) => {
   return data;
 };
 
+const deleteCourse = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.delete(`${API_URL}/api/v1/course/${id}`, config);
+
+  return data;
+};
+
 const getInstructorCourses = async (token) => {
   const config = {
     headers: {
@@ -53,6 +64,7 @@ const instructorService = {
   createNewCourse,
   getInstructorCourses,
   updateCourse,
+  deleteCourse,
 };
 
 export default instructorService;

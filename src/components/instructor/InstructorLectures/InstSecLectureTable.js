@@ -14,12 +14,12 @@ const InstSecLectureTable = ({ lectures, editLecture }) => {
           </thead>
           <tbody>
             {lectures.map((lecture) => (
-              <tr key={lecture.id}>
+              <tr key={lecture._id}>
                 <td>{lecture.title}</td>
                 <td>
                   <Button
                     variant="success"
-                    onClick={() => editLecture(lecture.id)}
+                    onClick={() => editLecture(lecture._id, lecture.title)}
                   >
                     EDIT
                   </Button>
