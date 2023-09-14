@@ -31,7 +31,7 @@ const EnrolledCoursePlayer = () => {
 
   return (
     <div style={{ marginTop: "150px" }}>
-      {isLoadingDetails ? (
+      {isLoadingDetails || !enrolledCourseDetails ? (
         <Loader />
       ) : (
         <Container>
