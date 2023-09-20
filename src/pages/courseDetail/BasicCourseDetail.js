@@ -98,10 +98,11 @@ const BasicCourseDetail = ({ course }) => {
               The most advanced and modern course on the internet: master
               required skills, and so much more.
             </div>
-            <div className="mb-2">
+            <div className="d-flex mb-2">
+              <p className="fw-bold me-2">{course.averageRating}</p>
               <Rating
                 value={course.averageRating}
-                text={`${course.numOfReviews} reviews`}
+                text={` of ${course.numOfReviews} reviews`}
               />
             </div>
             <div>

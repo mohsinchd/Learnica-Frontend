@@ -10,6 +10,7 @@ import InstructorAbout from "./InstructorAbout";
 import Loader from "../../components/SharedComponents/Loader";
 
 import { getCourseDetails } from "../../redux/reducers/userSideCourses/userSideCoursesSlice";
+import UserReviews from "./UserReviews";
 
 const SelectedCourseDetail = () => {
   const { id } = useParams();
@@ -34,6 +35,7 @@ const SelectedCourseDetail = () => {
           <CourseContent course={courseDetails} />
           <Description course={courseDetails} />
           <InstructorAbout course={courseDetails} />
+          <UserReviews course={courseDetails} />
         </>
       )}
     </div>

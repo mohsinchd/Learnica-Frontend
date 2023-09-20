@@ -6,6 +6,7 @@ import courseSectionsReducer from "./reducers/courseSections/courseSectionsSlice
 import courseLecturesReducer from "./reducers/courseLectures/courseLecturesSlice";
 import userSideCoursesReducer from "./reducers/userSideCourses/userSideCoursesSlice";
 import cartReducer from "./reducers/cart/cartSlice";
+import courseReviewsReducer from "./reducers/courseReviews/courseReviewsSlice";
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     courseSections: courseSectionsReducer,
     courseLectures: courseLecturesReducer,
     userSideCourses: userSideCoursesReducer,
+    courseReviews: courseReviewsReducer,
     cart: cartReducer,
   },
 });

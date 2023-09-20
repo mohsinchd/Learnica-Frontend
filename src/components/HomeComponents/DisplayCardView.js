@@ -27,10 +27,13 @@ const DisplayCardView = ({ cardData, children }) => {
                   <Card.Body>
                     <Card.Title>{card.title}</Card.Title>
                     <Card.Text>Price: ${card.price}</Card.Text>
-                    <Rating
-                      value={card.averageRating}
-                      text={`${card.numOfReviews} reviews`}
-                    />
+                    <div className="d-flex">
+                      <p className="fw-bold me-2">{card.averageRating}</p>
+                      <Rating
+                        value={card.averageRating}
+                        text={` of ${card.numOfReviews} reviews`}
+                      />
+                    </div>
                     <Link to={`/courseDetail/${card._id}`}>
                       <Button
                         variant="success"

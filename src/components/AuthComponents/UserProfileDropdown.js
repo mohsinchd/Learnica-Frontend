@@ -27,8 +27,19 @@ const UserProfileDropdown = () => {
     <>
       <DropdownButton
         id="user-profile-dropdown"
-        title={user.name}
-        variant="outline-success mb-2"
+        title={
+          <img
+            src={user.avatar.url}
+            alt="Error"
+            className="img-fluid rounded-circle mb-2 ms-2"
+            style={{
+              width: 50,
+              height: 50,
+            }}
+          />
+        }
+        // title={user.name}
+        variant=" mb-2"
         size="sm"
         style={{ borderRadius: "500px" }}
       >
@@ -75,15 +86,6 @@ const UserProfileDropdown = () => {
         <Dropdown.Divider />
         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
       </DropdownButton>
-      <img
-        src={user.avatar.url}
-        alt="Error"
-        className="img-fluid rounded-circle mb-2 ms-2"
-        style={{
-          width: 50,
-          height: 50,
-        }}
-      />
     </>
   );
 };
