@@ -8,7 +8,8 @@ const Description = ({ course }) => {
         <Row>
           <Col md={8}>
             <h1>Description</h1>
-            <p>{course.description}</p>
+            <div dangerouslySetInnerHTML={{ __html: course.description }}></div>
+            {/* <p>{course.description}</p> */}
           </Col>
         </Row>
       </Container>

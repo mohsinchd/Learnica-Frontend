@@ -53,7 +53,7 @@ const PlayCourseDetail = ({ course }) => {
   return (
     <Row>
       <h2>About Course</h2>
-      <p>{course.description}</p>
+      <p>{course.description} </p>
       <p>Total Sections : {course.sections.length}</p>
       <p>
         Total Lectures :{" "}
