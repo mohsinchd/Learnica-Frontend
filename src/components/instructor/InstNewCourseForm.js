@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Form, Container, Button, Row, Col } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 
-// React-Quill
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-
 // import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -16,9 +12,9 @@ import {
 import InstructorOffCanvas from "./InstructorOffCanvas";
 import BackButton from "../SharedComponents/BackButton";
 import Loader from "../SharedComponents/Loader";
+import TextEditor from "../SharedComponents/TextEditor";
 
 const InstNewCourseForm = () => {
-  const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -50,11 +46,13 @@ const InstNewCourseForm = () => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
+
   const descriptionHandler = (value) => {
     setFormData((prev) => {
       return { ...prev, description: value };
     });
   };
+
   const submitFormHandler = (e) => {
     e.preventDefault();
     formData.price = Number(formData.price);
@@ -116,11 +114,8 @@ const InstNewCourseForm = () => {
                 </Form.Group>
                 <Form.Group controlId="description" className="mb-4">
                   <Form.Label>Description</Form.Label>
-                  <ReactQuill
-                    // style={{ height: 300 }}
-                    theme="snow"
-                    onChange={descriptionHandler}
-                  />
+
+                  <TextEditor descriptionHandler={descriptionHandler} />
                 </Form.Group>
                 <Form.Group controlId="file" className="mb-4">
                   <Form.Label>Thumbnail</Form.Label>
@@ -128,6 +123,7 @@ const InstNewCourseForm = () => {
                   <Form.Control
                     type="file"
                     name="file"
+                    accept="image/jpeg, image/png, img/gif"
                     onChange={handleDrop}
                   ></Form.Control>
                 </Form.Group>

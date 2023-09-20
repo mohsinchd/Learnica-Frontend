@@ -11,6 +11,7 @@ import {
 } from "../../../redux/reducers/instructor/instructorSlice";
 import toast from "react-hot-toast";
 import Loader from "../../SharedComponents/Loader";
+import TextEditor from "../../SharedComponents/TextEditor";
 
 const InstructorSectionEdit = () => {
   const [formData, setFormData] = useState({
@@ -62,6 +63,12 @@ const InstructorSectionEdit = () => {
     dispatch(updateCourse({ courseData, id }));
   };
 
+  const descriptionHandler = (value) => {
+    setFormData((prev) => {
+      return { ...prev, description: value };
+    });
+  };
+
   useEffect(() => {
     if (message) {
       toast.success(message);
@@ -108,13 +115,7 @@ const InstructorSectionEdit = () => {
                 </Form.Group>
                 <Form.Group controlId="description" className="mb-4">
                   <Form.Label>Description</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    name="description"
-                    placeholder="Enter description"
-                    onChange={inputChangeHandler}
-                  />
+                  <TextEditor descriptionHandler={descriptionHandler} />
                 </Form.Group>
                 <Form.Group controlId="file" className="mb-4">
                   <Form.Label>Thumbnail</Form.Label>

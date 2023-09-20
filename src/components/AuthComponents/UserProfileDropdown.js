@@ -26,12 +26,13 @@ const UserProfileDropdown = () => {
   ) : (
     <>
       <DropdownButton
+        align={"end"}
         id="user-profile-dropdown"
         title={
           <img
             src={user.avatar.url}
             alt="Error"
-            className="img-fluid rounded-circle mb-2 ms-2"
+            className="img-fluid rounded-circle mb-2"
             style={{
               width: 50,
               height: 50,

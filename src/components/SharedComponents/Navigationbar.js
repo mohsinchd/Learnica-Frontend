@@ -85,10 +85,7 @@ const Navigationbar = () => {
                 <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form
-              onSubmit={(e) => e.preventDefault()}
-              className="d-flex me-2 mb-2"
-            >
+            <Form onSubmit={(e) => e.preventDefault()} className="d-flex mb-2">
               <Form.Control
                 className="text-dark search-input"
                 type="search"
@@ -115,7 +112,7 @@ const Navigationbar = () => {
             ) : (
               <>
                 <NavLink to="/Login">
-                  <Button variant="outline-success me-2 mb-2" size="sm">
+                  <Button variant="outline-success ms-2 me-2 mb-2" size="sm">
                     Login
                   </Button>
                 </NavLink>

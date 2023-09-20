@@ -171,6 +171,7 @@ const Register = () => {
                     <Form.Label>Profile Picture</Form.Label>
                     <Form.Control
                       type="file"
+                      accept="image/jpeg, image/png, img/gif"
                       placeholder="Select Profile Photo"
                       onChange={selectImageHandler}
                     />
