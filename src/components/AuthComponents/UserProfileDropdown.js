@@ -66,15 +66,15 @@ const UserProfileDropdown = () => {
 
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/edit-password")}>
-          Password
+          change password
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/profile-photo")}>
-          Profile photo
+          change profile pic
           <Dropdown.Divider />
         </Dropdown.Item>
         <Dropdown.Item onClick={() => navigate("/user-enrolledCourses")}>
-          Enrolled status
+          Enrolled courses
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/instructor-main-page")}>

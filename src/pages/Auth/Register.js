@@ -10,8 +10,12 @@ import toast from "react-hot-toast";
 import Loader from "../../components/SharedComponents/Loader";
 import { getUserInfo } from "../../redux/reducers/user/userSlice";
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 const Register = () => {
   const navigate = useNavigate();
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -51,30 +55,36 @@ const Register = () => {
       setImage(file);
     };
   };
-
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = new FormData();
-    // Handle form submission based on isSignUp prop
-    const { name, email, password, confirmPassword } = formData;
-    if (!name || !email || !password || !confirmPassword) {
-      return toast.error(
-        "Name, Email, Password, Confirm Password and Image is Required"
-      );
+    if (recaptchaValue) {
+      const userData = new FormData();
+      // Handle form submission based on isSignUp prop
+      const { name, email, password, confirmPassword } = formData;
+      if (!name || !email || !password || !confirmPassword) {
+        return toast.error(
+          "Name, Email, Password, Confirm Password and Image is Required"
+        );
+      }
+
+      if (password !== confirmPassword) {
+        return toast.error("Password and Confirm Password Not Matched.");
+      }
+
+      userData.append("name", name);
+      userData.append("email", email);
+      userData.append("password", password);
+      userData.append("file", image);
+
+      console.log(image);
+
+      dispatch(register(userData));
+    } else {
+      return toast.error("ReCaptcha is Required !...");
     }
-
-    if (password !== confirmPassword) {
-      return toast.error("Password and Confirm Password Not Matched.");
-    }
-
-    userData.append("name", name);
-    userData.append("email", email);
-    userData.append("password", password);
-    userData.append("file", image);
-
-    console.log(image);
-
-    dispatch(register(userData));
   };
 
   // Side Effects
@@ -176,7 +186,10 @@ const Register = () => {
                       onChange={selectImageHandler}
                     />
                   </Form.Group>
-
+                  <ReCAPTCHA
+                    sitekey="6Ld52UAoAAAAAHulLel0SmQtnOlKaesmfyY6GQ09" // Replace with your reCAPTCHA Site Key
+                    onChange={handleRecaptchaChange}
+                  />
                   <Button variant="success" type="submit" className="mt-3">
                     Register
                   </Button>
