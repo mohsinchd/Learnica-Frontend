@@ -58,8 +58,10 @@ const Register = () => {
   const handleRecaptchaChange = (value) => {
     setRecaptchaValue(value);
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (recaptchaValue) {
       const userData = new FormData();
       // Handle form submission based on isSignUp prop

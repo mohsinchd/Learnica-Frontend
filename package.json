@@ -18,7 +18,7 @@
     "react-dom": "^18.2.0",
     "react-draft-wysiwyg": "^1.15.0",
     "react-dropzone": "^14.2.3",
-    "react-google-recaptcha": "^3.1.0",
+    "react-google-recaptcha": "^2.1.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "react-quill": "^2.0.0",
