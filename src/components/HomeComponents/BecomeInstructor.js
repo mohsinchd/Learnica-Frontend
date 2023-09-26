@@ -1,7 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import instsecond from "../../Images/instsecond.jpg";
+
+import { useNavigate } from "react-router";
+
 const BecomeInstructor = () => {
+  const navigate = useNavigate();
   return (
     <Container className="p-5">
       <Row>
@@ -19,7 +23,12 @@ const BecomeInstructor = () => {
             knowledge to millions of students, empowering them with the
             necessary resources and competencies to teach their passions.
           </p>
-          <Button variant="outline-success ">Join As a Instructor</Button>
+          <Button
+            variant="outline-success "
+            onClick={() => navigate("/instructor-main-page")}
+          >
+            Join As a Instructor
+          </Button>
         </Col>
         <Col md={6} className="p-5">
           <img

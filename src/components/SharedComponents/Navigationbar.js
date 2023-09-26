@@ -13,6 +13,8 @@ import { NavLink, useNavigate, createSearchParams } from "react-router-dom";
 import UserProfileDropdown from "../AuthComponents/UserProfileDropdown";
 import SmallLoader from "./SmallLoader";
 
+// import { useNavigate } from "react-router-dom";
+
 const Navigationbar = () => {
   const [keyword, setKeyword] = useState("");
 
@@ -75,15 +77,20 @@ const Navigationbar = () => {
               className="me-auto my-2 my-lg-0"
               // navbarScroll
             >
-              <NavDropdown
-                title="categories"
-                id="navbarScrollingDropdown"
-                className="categories-heading"
-              >
-                <NavDropdown.Item href="#action3">Development</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Design</NavDropdown.Item>
-                <NavDropdown.Item href="#action5">Marketing</NavDropdown.Item>
-              </NavDropdown>
+              <NavLink onClick={() => navigate("/")}>
+                <Nav.Link>Home</Nav.Link>
+              </NavLink>
+
+              {user ? (
+                <NavLink onClick={() => navigate("/user-enrolledCourses")}>
+                  <Nav.Link href="">My Learning</Nav.Link>
+                </NavLink>
+              ) : (
+                ""
+              )}
+
+              <Nav.Link href="">About</Nav.Link>
+              <Nav.Link href="">Contact Us</Nav.Link>
             </Nav>
             <Form onSubmit={(e) => e.preventDefault()} className="d-flex mb-2">
               <Form.Control
