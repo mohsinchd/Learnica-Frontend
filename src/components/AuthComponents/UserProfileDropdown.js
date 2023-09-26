@@ -26,12 +26,13 @@ const UserProfileDropdown = () => {
   ) : (
     <>
       <DropdownButton
+        align={"end"}
         id="user-profile-dropdown"
         title={
           <img
             src={user.avatar.url}
             alt="Error"
-            className="img-fluid rounded-circle mb-2 ms-2"
+            className="img-fluid rounded-circle mb-2"
             style={{
               width: 50,
               height: 50,
@@ -65,15 +66,15 @@ const UserProfileDropdown = () => {
 
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/edit-password")}>
-          Password
+          change password
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/profile-photo")}>
-          Profile photo
+          change profile pic
           <Dropdown.Divider />
         </Dropdown.Item>
         <Dropdown.Item onClick={() => navigate("/user-enrolledCourses")}>
-          Enrolled status
+          Enrolled courses
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/instructor-main-page")}>

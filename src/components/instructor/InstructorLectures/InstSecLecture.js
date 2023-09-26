@@ -60,6 +60,11 @@ const InstSecLecture = () => {
     };
 
     dispatch(createLecture(data));
+
+    setTitle("");
+    setEditLecture(false);
+    setIsVideoFile("");
+    setVideo("");
   };
 
   const editLectureHandler = (id, title) => {
@@ -89,6 +94,8 @@ const InstSecLecture = () => {
     dispatch(editLectureThunk(data));
     setTitle("");
     setEditLecture(false);
+    setIsVideoFile("");
+    setVideo("");
   };
 
   useEffect(() => {
