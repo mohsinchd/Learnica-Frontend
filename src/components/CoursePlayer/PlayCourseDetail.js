@@ -52,8 +52,7 @@ const PlayCourseDetail = ({ course }) => {
 
   return (
     <Row>
-      <h2>About Course</h2>
-      <p>{course.description} </p>
+      <div dangerouslySetInnerHTML={{ __html: course.description }}></div>
       <p>Total Sections : {course.sections.length}</p>
       <p>
         Total Lectures :{" "}
