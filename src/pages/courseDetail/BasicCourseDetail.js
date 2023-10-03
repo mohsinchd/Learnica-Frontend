@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { LiaChartBarSolid } from "react-icons/lia";
+import {
+  MdAccessTimeFilled,
+  MdCloudDownload,
+  MdOutlineOndemandVideo,
+} from "react-icons/md";
+import { HiOutlineNewspaper } from "react-icons/hi";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -110,10 +117,32 @@ const BasicCourseDetail = ({ course }) => {
             </div>
           </Col>
           <Col md={4}>
-            <Card className="text-center">
+            <Card>
               <Card.Img variant="top" src={course.poster.url} />
-              <Card.Body className="">
-                <h1>${course.price}</h1>
+              <Card.Body className="p-4">
+                <h1>Course Overview</h1>
+                <p className="lead">
+                  <LiaChartBarSolid size={30} /> Beginner to Pro
+                </p>
+                <p className="lead">
+                  <MdOutlineOndemandVideo size={30} />{" "}
+                  {course.sections.reduce(
+                    (acc, sec) => acc + sec.lectures.length,
+                    0
+                  )}{" "}
+                  Lessons
+                </p>
+                <p className="lead">
+                  <MdCloudDownload size={30} /> Downloadable-content
+                </p>
+                <p className="lead">
+                  <HiOutlineNewspaper size={30} /> Hands on Exercises
+                </p>
+                <p className="lead">
+                  <MdAccessTimeFilled size={30} /> Learn at your own pace
+                </p>
+                <h3>Price: ${course.price}</h3>
+
                 {user && user._id === course.instructor._id ? (
                   <>
                     <h5>
@@ -144,7 +173,6 @@ const BasicCourseDetail = ({ course }) => {
                     </Button>
                   </>
                 )}
-
                 <span>30 days-money back gurantee</span>
               </Card.Body>
             </Card>

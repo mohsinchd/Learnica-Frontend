@@ -7,6 +7,7 @@ const UserReviews = ({ course }) => {
     <Container className="mt-3">
       <h1>User Reviews</h1>
       <Row>
+        {course.reviews.length === 0 && <h3>Not Reviewed yet.</h3>}
         {course.reviews.map((review) => (
           <Col key={review._id} md={6}>
             <Card className="p-3">

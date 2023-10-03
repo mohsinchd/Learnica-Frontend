@@ -3,11 +3,10 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Description = ({ course }) => {
   return (
-    <div style={{ marginTop: "81px" }}>
+    <div className="my-2">
       <Container>
         <Row>
           <Col md={8}>
-            <h1>Description</h1>
             <div dangerouslySetInnerHTML={{ __html: course.description }}></div>
             {/* <p>{course.description}</p> */}
           </Col>
