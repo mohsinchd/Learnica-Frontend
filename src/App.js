@@ -33,7 +33,10 @@ import PaymentSuccess from "./pages/Payment/PaymentSuccess";
 import EnrolledCoursePlayer from "./pages/enrolledPage/EnrolledCoursePlayer";
 import UserEnrolledCourses from "./pages/Profile/UserEnrolledCourses";
 import InstructorSectionEdit from "./components/instructor/InstructorCourses/InstructorSectionEdit";
-
+import Mohsin from "./components/ContactUs/Mohsin";
+import Shahzaib from "./components/ContactUs/Shahzaib";
+import Salman from "./components/ContactUs/Salman";
+import ContactUs from "./pages/contactUs/ContactUs";
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
   // const location = useLocation();
@@ -43,9 +46,6 @@ const RouterComponent = () => {
     "/profile-photo",
     "/instructor-main-page",
   ];
-  // const shouldShowNavigationbar = showNavigationRoutes.includes(
-  //   location.pathname
-  // );
 
   return (
     <BrowserRouter>
@@ -130,6 +130,10 @@ const RouterComponent = () => {
             />
 
             <Route path="/search-courses" element={<SearchedCourses />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/mohsin" element={<Mohsin />} />
+            <Route path="/Shahzaib" element={<Shahzaib />} />
+            <Route path="/salman" element={<Salman />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
