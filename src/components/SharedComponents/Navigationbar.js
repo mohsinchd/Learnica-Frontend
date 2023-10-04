@@ -90,7 +90,9 @@ const Navigationbar = () => {
               )}
 
               <Nav.Link href="">About</Nav.Link>
-              <Nav.Link href="">Contact Us</Nav.Link>
+              <NavLink onClick={() => navigate("/contact-us")}>
+                <Nav.Link href="">Contact Us</Nav.Link>
+              </NavLink>
             </Nav>
             <Form onSubmit={(e) => e.preventDefault()} className="d-flex mb-2">
               <Form.Control
