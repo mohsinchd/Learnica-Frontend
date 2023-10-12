@@ -37,6 +37,8 @@ import Mohsin from "./components/ContactUs/Mohsin";
 import Shahzaib from "./components/ContactUs/Shahzaib";
 import Salman from "./components/ContactUs/Salman";
 import ContactUs from "./pages/contactUs/ContactUs";
+import InstructorAnalyticsMain from "./pages/InstructorAnalytics/InstructorAnalyticsMain";
+
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
   // const location = useLocation();
@@ -111,6 +113,12 @@ const RouterComponent = () => {
                 path="/instructorCourse/lectures/:courseId/:sectionId"
                 element={<InstSecLecture />}
               />
+
+              <Route
+                path="/instructor/analytics"
+                element={<InstructorAnalyticsMain />}
+              />
+
               <Route path="/cart" element={<Cart />} />
 
               <Route

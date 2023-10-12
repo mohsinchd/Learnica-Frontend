@@ -60,11 +60,26 @@ const getInstructorCourses = async (token) => {
   return data;
 };
 
+const getInstructorAnalytics = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.get(
+    `${API_URL}/api/v1/analytics/teacher`,
+    config
+  );
+
+  return data;
+};
+
 const instructorService = {
   createNewCourse,
   getInstructorCourses,
   updateCourse,
   deleteCourse,
+  getInstructorAnalytics,
 };
 
 export default instructorService;

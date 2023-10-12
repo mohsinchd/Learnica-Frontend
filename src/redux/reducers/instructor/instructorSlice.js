@@ -7,6 +7,7 @@ const initialState = {
   message: "",
   errorMessage: "",
   courses: [],
+  analytics: null,
 };
 
 export const createCourse = createAsyncThunk(
@@ -77,6 +78,23 @@ export const getInstCourses = createAsyncThunk(
   }
 );
 
+export const getInstAnalytics = createAsyncThunk(
+  "instructor/analytics",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await instructorService.getInstructorAnalytics(token);
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(message);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const instructorSlice = createSlice({
   name: "instructorSlice",
   initialState,
@@ -118,6 +136,19 @@ const instructorSlice = createSlice({
       .addCase(getInstCourses.rejected, (state, action) => {
         state.isLoading = false;
         state.courses = [];
+        state.isError = true;
+        state.errorMessage = action.payload;
+      })
+      .addCase(getInstAnalytics.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getInstAnalytics.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.analytics = action.payload.analytics;
+      })
+      .addCase(getInstAnalytics.rejected, (state, action) => {
+        state.isLoading = false;
+        state.analytics = {};
         state.isError = true;
         state.errorMessage = action.payload;
       })

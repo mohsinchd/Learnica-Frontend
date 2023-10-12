@@ -41,6 +41,9 @@ const InstructorOffCanvas = () => {
             <Nav.Link>
               <Link to="/instructor/courses">View Your Courses</Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link to="/instructor/analytics">View Analytics</Link>
+            </Nav.Link>
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>
