@@ -46,9 +46,13 @@ const Login = () => {
 
   useEffect(() => {
     if (user && message) {
-      navigate("/");
-      toast.success(message);
-      dispatch(reset());
+      if (user.role === "admin") {
+        navigate("/admin/analytics");
+      } else {
+        navigate("/");
+        toast.success(message);
+        dispatch(reset());
+      }
     }
 
     if (isError && message) {
@@ -57,7 +61,11 @@ const Login = () => {
     }
 
     if (user) {
-      navigate("/");
+      if (user.role === "admin") {
+        navigate("/admin/analytics");
+      } else {
+        navigate("/");
+      }
     }
   }, [user, isError, message, dispatch]);
 

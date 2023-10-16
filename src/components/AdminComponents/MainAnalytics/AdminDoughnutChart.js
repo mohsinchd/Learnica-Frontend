@@ -4,8 +4,8 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { useSelector } from "react-redux";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
-const DoughnutChart = () => {
-  const { analytics } = useSelector((state) => state.instructor);
+const AdminDoughnutChart = () => {
+  const { analytics } = useSelector((state) => state.admin);
 
   const data = {
     labels: ["Total Courses", "Enrolled Courses", "Not Enrolled Courses"],
@@ -33,7 +33,7 @@ const DoughnutChart = () => {
           weight: "bold", // Adjust the font weight (e.g., 'normal', 'bold', 'light', etc.)
         },
         formatter: (value, context) => {
-          return `${value} course`; // Customize the label format as needed
+          return value > 0 ? `${value} course` : ""; // Customize the label format as needed
         },
       },
     },
@@ -46,4 +46,4 @@ const DoughnutChart = () => {
   );
 };
 
-export default DoughnutChart;
+export default AdminDoughnutChart;

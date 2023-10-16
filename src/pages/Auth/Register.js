@@ -97,13 +97,21 @@ const Register = () => {
     }
 
     if (user && message) {
-      navigate("/");
-      toast.success(message);
-      dispatch(reset());
+      if (user.role === "admin") {
+        navigate("/admin/analytics");
+      } else {
+        navigate("/");
+        toast.success(message);
+        dispatch(reset());
+      }
     }
 
     if (user) {
-      navigate("/");
+      if (user.role === "admin") {
+        navigate("/admin/analytics");
+      } else {
+        navigate("/");
+      }
     }
   }, [isError, message, user, isLoading]);
 
