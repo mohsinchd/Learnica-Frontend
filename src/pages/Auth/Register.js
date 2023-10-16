@@ -197,7 +197,7 @@ const Register = () => {
                     />
                   </Form.Group>
                   <ReCAPTCHA
-                    sitekey="6Ld52UAoAAAAAHulLel0SmQtnOlKaesmfyY6GQ09" // Replace with your reCAPTCHA Site Key
+                    sitekey="6Ld5d6coAAAAADXzIhJGqa178gj_v5tqYyE_4o75" // Replace with your reCAPTCHA Site Key
                     onChange={handleRecaptchaChange}
                   />
                   <Button variant="success" type="submit" className="mt-3">
