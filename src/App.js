@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "protected-route-react";
 import { useSelector } from "react-redux";
 
@@ -39,9 +39,16 @@ import Salman from "./components/ContactUs/Salman";
 import ContactUs from "./pages/contactUs/ContactUs";
 import InstructorAnalyticsMain from "./pages/InstructorAnalytics/InstructorAnalyticsMain";
 
+import AdminPanelMain from "./pages/AdminPanel/AdminPanelMain";
+import AdminPanelUsers from "./pages/AdminPanel/AdminPanelUsers";
+import AdminPanelCourses from "./pages/AdminPanel/AdminPanelCourses";
+import AdminPanelSingleUser from "./pages/AdminPanel/AdminPanelSingleUser";
+import AdminPanelSingleCourse from "./pages/AdminPanel/AdminPanelSingleCourse";
+
 const RouterComponent = () => {
   const { user } = useSelector((state) => state.auth);
   // const location = useLocation();
+
   const showNavigationRoutes = [
     "/",
     "/edit-profile",
@@ -50,8 +57,8 @@ const RouterComponent = () => {
   ];
 
   return (
-    <BrowserRouter>
-      {<Navigationbar />}
+    <>
+      {(!user || (user && user.role !== "admin")) && <Navigationbar />}
 
       <div className="">
         <main>
@@ -137,6 +144,29 @@ const RouterComponent = () => {
               element={<SelectedCourseDetail />}
             />
 
+            <Route
+              element={
+                <ProtectedRoute
+                  isAuthenticated={user ? true : false}
+                  adminRoute={true}
+                  isAdmin={user && user.role === "admin" ? true : false}
+                  redirectAdmin={"/"}
+                />
+              }
+            >
+              <Route path="/admin/analytics" element={<AdminPanelMain />} />
+              <Route path="/admin/users" element={<AdminPanelUsers />} />
+              <Route
+                path="/admin/users/:id"
+                element={<AdminPanelSingleUser />}
+              />
+              <Route path="/admin/courses" element={<AdminPanelCourses />} />
+              <Route
+                path="/admin/courses/:id"
+                element={<AdminPanelSingleCourse />}
+              />
+            </Route>
+
             <Route path="/search-courses" element={<SearchedCourses />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/mohsin" element={<Mohsin />} />
@@ -147,9 +177,9 @@ const RouterComponent = () => {
           </Routes>
         </main>
       </div>
-      <Footer />
+      {(!user || (user && user.role !== "admin")) && <Footer />}
       <Toaster />
-    </BrowserRouter>
+    </>
   );
 };
 

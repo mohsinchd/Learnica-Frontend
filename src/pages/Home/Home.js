@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getAllCourses } from "../../redux/reducers/userSideCourses/userSideCoursesSlice";
 
 import HomeCarousel from "../../components/HomeComponents/HomeCarousel";
@@ -12,9 +13,16 @@ import Loader from "../../components/SharedComponents/Loader";
 const Home = () => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const { isLoading, courses } = useSelector((state) => state.userSideCourses);
 
+  const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
+    if (user && user.role === "admin") {
+      navigate("/admin/analytics");
+    }
     dispatch(getAllCourses());
   }, []);
 
