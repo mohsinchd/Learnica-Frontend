@@ -59,7 +59,7 @@ const BasicCourseDetail = ({ course }) => {
         description: "Test Transaction",
         image: user.avatar.url,
         order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: `http://localhost:5000/api/v1/payment/paymentVerification?courseId=${course._id}&userId=${user._id}`,
+        callback_url: `${process.env.REACT_APP_API_URL}/api/v1/payment/paymentVerification?courseId=${course._id}&userId=${user._id}`,
         prefill: {
           name: user.name,
           email: user.email,
