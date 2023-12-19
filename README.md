@@ -14,4 +14,4 @@ Welcome to Learnica, a web application that enables students to buy courses and 
 
 ## Demo
 
-Check out the live demo of Learnica: [https://learnica-frontend.vercel.app/](https://learnica-frontend.vercel.app/)
+Check out the live demo of Learnica: [https://learnica.vercel.app/](https://learnica.vercel.app/)
