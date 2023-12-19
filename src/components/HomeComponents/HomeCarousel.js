@@ -14,28 +14,24 @@ const HomeCarousel = () => {
         <Carousel.Item>
           <ImageCarousel text="laptop image" imagePath={pcBoy} />
           <Carousel.Caption>
-            <h3 className="text-light">secure you saving with Great Future</h3>
-            <p>
-              Millions of people join our platform , invest you short time and
-              make a large deal of future{" "}
-            </p>
+            <h3 className="text-light">Discover Limitless Learning</h3>
+            <p>Explore Diverse Courses for Every Passion </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <ImageCarousel text="laptop image " imagePath={laptopattable} />
           <Carousel.Caption>
-            <h3 className="text-light">secure you saving with Great Future</h3>
-            <p>
-              Millions of people join our platform , invest you short time and
-              make a large deal of future{" "}
-            </p>
+            <h3 className="text-light">Master New Skills with Learnica</h3>
+            <p>Learn from Industry Experts </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <ImageCarousel text="laptop image " imagePath={laptop} />
           <Carousel.Caption>
-            <h3 className="text-light">Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3 className="text-light">
+              Join a Community of Lifelong Learners
+            </h3>
+            <p>Enrich Your Mind, Expand Your Horizons</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

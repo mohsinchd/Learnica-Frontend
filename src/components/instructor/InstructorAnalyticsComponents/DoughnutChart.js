@@ -47,3 +47,5 @@ const DoughnutChart = () => {
 };
 
 export default DoughnutChart;
+
+// This component is actually explaning about the anaylysis of the courses in which tha the students are enrolleed

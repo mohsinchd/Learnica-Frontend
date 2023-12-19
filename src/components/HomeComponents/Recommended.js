@@ -5,7 +5,7 @@ import DisplayCardView from "./DisplayCardView";
 const Recommended = ({ courses }) => {
   return (
     <div style={{ marginTop: "100px" }}>
-      <DisplayCardView cardData={courses}>Recommended Course</DisplayCardView>
+      <DisplayCardView cardData={courses}>Our Courses</DisplayCardView>
     </div>
   );
 };

@@ -12,11 +12,62 @@ import Rating from "../../components/SharedComponents/Rating";
 import Loader from "../../components/SharedComponents/Loader";
 import { toast } from "react-hot-toast";
 
+import axios from "axios";
+
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Cart = () => {
   const dispatch = useDispatch();
   const { isLoading, cartItems, isSuccess, successMessage } = useSelector(
     (state) => state.cart
   );
+  const { user } = useSelector((state) => state.auth);
+  const totalPayment = cartItems.reduce((acc, course) => course.price + acc, 0);
+
+  console.log("total", totalPayment);
+
+  const courseIdString = cartItems.map((course) => course._id).join(",");
+
+  const paymentHandler = async () => {
+    try {
+      const {
+        data: { apiKey },
+      } = await axios.get(`${API_URL}/api/v1/payment`);
+
+      const {
+        data: { order },
+      } = await axios.post(`${API_URL}/api/v1/payment`, {
+        amount: totalPayment,
+      });
+
+      var options = {
+        key: apiKey, // Enter the Key ID generated from the Dashboard
+        amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "USD",
+        name: "Learnica",
+        description: "Test Transaction",
+        image: user.avatar.url,
+        order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        callback_url: `${process.env.REACT_APP_API_URL}/api/v1/payment//multipleVerification?courseId=${courseIdString}&userId=${user._id}`,
+        prefill: {
+          name: user.name,
+          email: user.email,
+          contact: user.email,
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3B3B3B",
+        },
+      };
+      var rzp1 = new window.Razorpay(options);
+
+      rzp1.open();
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
 
   useEffect(() => {
     if (isSuccess && successMessage) {
@@ -93,7 +144,11 @@ const Cart = () => {
                   .reduce((acc, item) => acc + item.price, 0)
                   .toFixed(2)}
               </h3>
-              <Button variant="success" className="w-100">
+              <Button
+                variant="success"
+                className="w-100"
+                onClick={() => paymentHandler()}
+              >
                 PAY NOW
               </Button>
             </Col>
