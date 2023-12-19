@@ -8,13 +8,13 @@ const SingleCourseCharts = () => {
     <>
       <Col md={6}>
         <Card className="p-3 h-100">
-          <h3>Bar Analysis</h3>
+          <h3>Enrollements / Month in Bar Chart</h3>
           <BarChart />
         </Card>
       </Col>
       <Col md={6}>
         <Card className="p-3 h-100">
-          <h3>Line Analysis</h3>
+          <h3>Enrollements / Month in Line Chart</h3>
           <LineChart />
         </Card>
       </Col>

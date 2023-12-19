@@ -22,7 +22,7 @@ const InstructorAnalyticsTopCards = () => {
       <Col md={4}>
         <Card className="p-5 bg-dark text-light">
           <div className="d-flex align-items-center justify-content-between">
-            <h3 className="mb-0">Total Students</h3>
+            <h3 className="mb-0">Total Enrolls</h3>
             <PiStudentDuotone size={45} />
           </div>
           <h4>{analytics.totalEnrolledStudents} students</h4>

@@ -24,7 +24,7 @@ const Salman = () => {
               className="img-fluid rounded-circle"
               style={{ maxWidth: "200px", maxHeight: "200px" }} // Adjust the image size here
             />
-            <h2>Shahzaib Sarwar</h2>
+            <h2>Salman Talat</h2>
             <p>Documentation</p>
           </Col>
         </Row>
