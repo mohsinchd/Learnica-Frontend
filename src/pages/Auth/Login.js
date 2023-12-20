@@ -74,7 +74,7 @@ const Login = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Container className="w-50 authWidth shadow p-5  rounded ">
+        <Container className="w-50 authWidth p-5  rounded ">
           <h1 className=" mb-3">Sign In</h1>
           <Row>
             <Col>

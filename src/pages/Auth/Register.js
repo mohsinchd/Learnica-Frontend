@@ -123,9 +123,9 @@ const Register = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <Container className="w-50 authWidth shadow p-5">
+          <Container className="w-50 authWidth  p-5">
             <Row>
-              <h1 className="text-center">Sign Up</h1>
+              <h1>Sign Up</h1>
               <Col>
                 <Form onSubmit={handleSubmit} style={{ borderRadius: "15px" }}>
                   <Avatar src={imagePrev} alt={"Error"} />
