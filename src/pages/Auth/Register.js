@@ -98,14 +98,9 @@ const Register = () => {
       dispatch(reset());
     }
 
-    if (user && message) {
-      if (user.role === "admin") {
-        navigate("/admin/analytics");
-      } else {
-        navigate("/");
-        toast.success(message);
-        dispatch(reset());
-      }
+    if (message) {
+      toast.success(message);
+      dispatch(reset());
     }
 
     if (user) {
