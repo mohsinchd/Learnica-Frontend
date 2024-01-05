@@ -9,6 +9,7 @@ import Recommended from "../../components/HomeComponents/Recommended";
 import ShortSkills from "../../components/HomeComponents/ShortSkills";
 import BecomeInstructor from "../../components/HomeComponents/BecomeInstructor";
 import Loader from "../../components/SharedComponents/Loader";
+import HomeVideo from "../../components/HomeComponents/HomeVideo";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Home = () => {
       <HomeCarousel />
       {isLoading ? <Loader /> : <Recommended courses={courses} />}
       {/* <ShortSkills /> */}
+      <HomeVideo />
       <BecomeInstructor />
     </>
   );
