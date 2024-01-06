@@ -89,7 +89,10 @@ const Navigationbar = () => {
                 ""
               )}
 
-              <Nav.Link href="">About</Nav.Link>
+              <NavLink onClick={() => navigate("/about-us")}>
+                <Nav.Link href="">About Us</Nav.Link>
+              </NavLink>
+
               <NavLink onClick={() => navigate("/contact-us")}>
                 <Nav.Link href="">Contact Us</Nav.Link>
               </NavLink>

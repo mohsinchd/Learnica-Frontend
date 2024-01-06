@@ -24,7 +24,7 @@ const Register = () => {
   });
 
   const dispatch = useDispatch();
-  const { isLoading, user, isError, message } = useSelector(
+  const { isLoading, user, isError, message, isSuccess } = useSelector(
     (state) => state.auth
   );
 
@@ -66,10 +66,18 @@ const Register = () => {
     const userData = new FormData();
     // Handle form submission based on isSignUp prop
     const { name, email, password, confirmPassword } = formData;
-    if (!name || !email || !password || !confirmPassword) {
-      return toast.error(
-        "Name, Email, Password, Confirm Password and Image is Required"
-      );
+
+    if (!name) {
+      return toast.error("Name is Required.");
+    }
+    if (!email) {
+      return toast.error("Email is Required.");
+    }
+    if (!password) {
+      return toast.error("Password is Required.");
+    }
+    if (!confirmPassword) {
+      return toast.error("Confirm Password is Required.");
     }
 
     if (password !== confirmPassword) {
@@ -98,7 +106,7 @@ const Register = () => {
       dispatch(reset());
     }
 
-    if (message) {
+    if (isSuccess && message) {
       toast.success(message);
       dispatch(reset());
     }

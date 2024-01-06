@@ -37,8 +37,11 @@ const Login = () => {
 
     const { email, password } = formData;
 
-    if (!email || !password) {
-      return toast.error("Email or Password is Incorrect.");
+    if (!email) {
+      return toast.error("Email is Required.");
+    }
+    if (!password) {
+      return toast.error("Password is Required.");
     }
 
     dispatch(login(formData));

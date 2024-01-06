@@ -57,6 +57,27 @@ const InstNewCourseForm = () => {
     e.preventDefault();
     formData.price = Number(formData.price);
 
+    const { title, price, file, description, preReq, category } = formData;
+
+    if (!title) {
+      return toast.error("Course Title is Required.");
+    }
+    if (!preReq) {
+      return toast.error("Course Pre-requisites are Required.");
+    }
+    if (!description) {
+      return toast.error("Course Description is Required.");
+    }
+    if (!file) {
+      return toast.error("Course Thumbnail is Required.");
+    }
+    if (!price) {
+      return toast.error("Course Price is Required.");
+    }
+    if (!category) {
+      return toast.error("Course category is Required.");
+    }
+
     const courseData = new FormData();
 
     for (let key in formData) {

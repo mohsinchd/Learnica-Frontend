@@ -37,6 +37,7 @@ import Mohsin from "./components/ContactUs/Mohsin";
 import Shahzaib from "./components/ContactUs/Shahzaib";
 import Salman from "./components/ContactUs/Salman";
 import ContactUs from "./pages/contactUs/ContactUs";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import InstructorAnalyticsMain from "./pages/InstructorAnalytics/InstructorAnalyticsMain";
 
 import AdminPanelMain from "./pages/AdminPanel/AdminPanelMain";
@@ -169,6 +170,7 @@ const RouterComponent = () => {
 
             <Route path="/search-courses" element={<SearchedCourses />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="/mohsin" element={<Mohsin />} />
             <Route path="/Shahzaib" element={<Shahzaib />} />
             <Route path="/salman" element={<Salman />} />
