@@ -7,6 +7,7 @@ const initialState = {
   user: user ? user : null,
   isLoading: false,
   isError: false,
+  isSuccess: false,
   message: "",
   logoutMessage: "",
 };
@@ -81,6 +82,7 @@ const authSlice = createSlice({
   reducers: {
     reset: (state) => {
       state.isError = false;
+      state.isSuccess = false;
       state.isLoading = false;
       state.message = "";
       state.logoutMessage = "";
@@ -95,10 +97,12 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.message = action.payload.message;
+        state.isSuccess = true;
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false;
         state.user = null;
         state.message = action.payload;
       })
@@ -108,12 +112,14 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
+        state.isSuccess = true;
         state.user = null;
         state.logoutMessage = action.payload.message;
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false;
         state.logoutMessage = action.payload;
       })
       .addCase(login.pending, (state) => {
@@ -122,12 +128,14 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
+        state.isSuccess = true;
         state.user = action.payload.user;
         state.message = action.payload.message;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false;
         state.user = null;
         state.message = action.payload;
       })
@@ -137,11 +145,13 @@ const authSlice = createSlice({
       .addCase(forgotPassword.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
+        state.isSuccess = true;
         state.message = action.payload.message;
       })
       .addCase(forgotPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false;
         state.message = action.payload;
       })
       .addCase(resetPassword.pending, (state) => {
@@ -150,11 +160,13 @@ const authSlice = createSlice({
       .addCase(resetPassword.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
+        state.isSuccess = true;
         state.message = action.payload.message;
       })
       .addCase(resetPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false;
         state.message = action.payload;
       });
   },
