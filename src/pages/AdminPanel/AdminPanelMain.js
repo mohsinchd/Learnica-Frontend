@@ -19,12 +19,16 @@ const AdminPanelMain = () => {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        overflowX: "hidden",
+      }}
+    >
       <Row>
         <Col md={2} className="p-0" style={{ minHeight: "100vh" }}>
           <Sidebar />
         </Col>
-        <Col md={10} className="py-3">
+        <Col md={10} className="py-3 px-4">
           <div className="d-flex align-items-center">
             <TbDeviceDesktopAnalytics
               size={50}
@@ -36,18 +40,14 @@ const AdminPanelMain = () => {
             <Loader />
           ) : (
             <>
-              {/* Top Cards */}
               <Row className="my-4">
                 <TopCards />
               </Row>
-
-              {/* Charts */}
 
               <Row className="my-4">
                 <AdminCharts />
               </Row>
 
-              {/* Review Table */}
               <div className="my-4">
                 <h3>Latest Reviews From Students</h3>
                 <AdminReviews />
@@ -56,7 +56,7 @@ const AdminPanelMain = () => {
           )}
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

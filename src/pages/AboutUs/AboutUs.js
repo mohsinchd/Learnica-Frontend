@@ -5,8 +5,8 @@ import aboutUsImage from "../../Images/pcBoy.jpg"; // Replace with your actual i
 const AboutUs = () => {
   return (
     <Container style={{ marginTop: "150px" }}>
-      <Row className="justify-content-center">
-        <Col lg={8}>
+      <Row>
+        <Col>
           <h2 className="text-center mb-4">About Learnica</h2>
           <p>
             Welcome to Learnica, your go-to platform for online learning! At
@@ -37,12 +37,26 @@ const AboutUs = () => {
             </Col>
             <Col md={6}>
               <p>
-                Our diverse range of courses covers everything from beginner to
-                advanced levels. We collaborate with experienced instructors who
-                are passionate about sharing their knowledge and expertise.
-                Learnica is not just a platform for courses; it's a community of
-                learners and educators working together to make learning an
-                enriching and enjoyable experience.
+                Discover a diverse spectrum of courses at Learnica, catering to
+                everyone from beginners seeking foundational knowledge to
+                advanced learners pursuing mastery. Our platform is fueled by
+                collaboration with seasoned instructors, each driven by a
+                passion for imparting their wealth of knowledge and expertise.
+                At Learnica, we transcend the conventional notion of being a
+                mere course provider. We've cultivated an immersive community
+                where learners and educators synergize, creating an environment
+                that goes beyond the ordinary. Together, we strive to redefine
+                the learning experience, making it not just informative but also
+                profoundly enriching and enjoyable. In this vibrant community,
+                education is not confined to the exchange of information; it's a
+                dynamic interaction that fosters collaboration, discussion, and
+                growth. We believe that the collective journey of learners and
+                educators is what truly elevates the learning process. By
+                working together, we transform education into a shared
+                adventure, where each participant contributes to the tapestry of
+                knowledge. As you navigate the Learnica platform, you'll witness
+                our commitment to fostering an inclusive and engaging
+                atmosphere.
               </p>
             </Col>
           </Row>

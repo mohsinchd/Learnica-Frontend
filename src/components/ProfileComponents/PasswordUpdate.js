@@ -23,7 +23,7 @@ const PasswordUpdate = () => {
         <Form.Group controlId="oldPassword">
           <Form.Label>Old Password</Form.Label>
           <Form.Control
-            placeholder="Old Password"
+            placeholder="Enter Old Password"
             type="password"
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
@@ -32,7 +32,7 @@ const PasswordUpdate = () => {
         <Form.Group controlId="password">
           <Form.Label>New Password</Form.Label>
           <Form.Control
-            placeholder="New Password"
+            placeholder="Enter New Password"
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}

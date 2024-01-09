@@ -30,6 +30,7 @@ const UserProfile = ({ user }) => {
         <Form.Group>
           <Form.Label htmlFor="email">Email</Form.Label>
           <Form.Control
+            disabled
             placeholder="User Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

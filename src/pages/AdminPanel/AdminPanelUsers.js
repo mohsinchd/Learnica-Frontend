@@ -18,12 +18,16 @@ const AdminPanelUsers = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        overflowX: "hidden",
+      }}
+    >
       <Row>
         <Col md={2} className="p-0" style={{ minHeight: "100vh" }}>
           <Sidebar />
         </Col>
-        <Col md={10} className="py-3">
+        <Col md={10} className="py-3 px-4">
           <div className="d-flex align-items-center">
             <PiUsersDuotone
               size={50}
