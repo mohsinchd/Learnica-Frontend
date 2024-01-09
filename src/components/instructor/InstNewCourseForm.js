@@ -110,11 +110,9 @@ const InstNewCourseForm = () => {
             <Col md={2}>
               <InstructorOffCanvas />
             </Col>
-            <Col md={10} className="  autoWidth shadow p-5">
+            <Col md={10} className="  autoWidth  p-5">
               <Form onSubmit={submitFormHandler} className="">
-                <h2 className="text-center mb-4">
-                  Requirements ! For Make Course
-                </h2>
+                <h2 className=" mb-4">Create New Course</h2>
                 <Form.Group controlId="title" className="mb-4">
                   <Form.Label>Course Title</Form.Label>
                   <Form.Control
@@ -166,7 +164,7 @@ const InstNewCourseForm = () => {
                     aria-label="Default select example"
                     onChange={inputChangeHandler}
                   >
-                    <option>Open this select menu</option>
+                    <option>Select Category</option>
                     <option value="Development">Development</option>
                     <option value="Design">Design</option>
                     <option value="IT & Software">IT & Software</option>

@@ -61,20 +61,20 @@ const UserProfileDropdown = () => {
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/edit-profile")}>
-          Edit Profile
+          Update Profile
         </Dropdown.Item>
 
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/edit-password")}>
-          Edit Password
+          Change Password
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/profile-photo")}>
-          Edit Profile Picture
+          Update Profile Picture
           <Dropdown.Divider />
         </Dropdown.Item>
         <Dropdown.Item onClick={() => navigate("/user-enrolledCourses")}>
-          Enrolled courses
+          Enrolled Courses
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/instructor-main-page")}>
@@ -82,7 +82,7 @@ const UserProfileDropdown = () => {
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={() => navigate("/cart")}>
-          Your Cart <span varient="outline-success">🛒</span>
+          Cart <span varient="outline-success">🛒</span>
         </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>

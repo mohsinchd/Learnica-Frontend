@@ -18,19 +18,14 @@ const Footer = () => {
                 <span className="text-light">LEARNICA</span>{" "}
               </h3>
               <p>
-                Welcome to Learnica, where knowledge meets innovation! At
-                Learnica, our mission is to empower learners from all walks of
-                life with high-quality, diverse, and engaging educational
-                content. Whether you're a student, professional, or lifelong
-                learner, our platform offers a rich tapestry of courses designed
-                to inspire and challenge. Embark on a journey of discovery,
-                acquire new skills, and enhance your expertise with Learnica.
-                Join our community of learners and educators today, and let's
-                navigate the exciting world of learning together!
+                Learnica empowers learners with diverse, high-quality courses
+                for students, professionals, and lifelong learners. <br /> Join
+                our vibrant community, embark on a journey of discovery, and
+                enhance your expertise with engaging educational content. <br />{" "}
               </p>
             </Col>
             <Col md={3}>
-              <h2 className="text-light">Links</h2>
+              <h3 className="text-light">Links</h3>
               <ul className="list-unstyled  mb-0 ">
                 <Link to="/">
                   <li>Home</li>
@@ -48,11 +43,11 @@ const Footer = () => {
               <h3 className="text-light">Contact Us</h3>
               <p>
                 {" "}
-                <BiLogoGmail size={25} /> shahzaib6915@gmail.com
+                <BiLogoGmail size={20} /> shahzaib6915@gmail.com
               </p>
               <p>
                 {" "}
-                <BsFillTelephoneFill size={25} /> +92300-1112986
+                <BsFillTelephoneFill size={16} /> +92300-1112986
               </p>
             </Col>
           </Row>
