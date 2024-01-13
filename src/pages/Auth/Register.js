@@ -34,11 +34,17 @@ const Register = () => {
   const [imagePrev, setImagePrev] = useState("");
 
   const handleChange = (e) => {
-    console.log(e);
+    const { name, value } = e.target;
+
+    // Validate only alphabets for the name field
+    if (name === "name" && !/^[A-Za-z\s]+$/.test(value)) {
+      return; // If the input contains anything other than alphabets, do not update state
+    }
+
     setFormData((prev) => {
       return {
         ...prev,
-        [e.target.name]: e.target.value,
+        [name]: value,
       };
     });
   };
