@@ -34,14 +34,14 @@ const LineChart = () => {
         label: "No of Enrollments / Month",
         // data: Object.values(course.report), // Real Data
         data: [5, 10, 30, 45, 14, 8, 30, 45, 23, 19, 70, 80],
-        backgroundColor: "#1f9bcf",
-        borderColor: "#1f9bcf",
+        backgroundColor: "#343a40",
+        borderColor: "#343a40",
         borderWidth: 3,
       },
     ],
   };
   return (
-    <div className="mt-5">
+    <div className="mt-3">
       <Line data={data} />
     </div>
   );

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const BarChart = () => {
   const { course } = useSelector((state) => state.admin);
   // Define an array of colors for courses
-  //   const colors = ["#1f9bcf", "#4bbf73", "#343a40"]; // Add more colors as needed
+  const colors = ["#1f9bcf", "#4bbf73", "#343a40"]; // Add more colors as needed
 
   //   Real Data
   //   const months = Object.keys(course.report);
@@ -34,15 +34,15 @@ const BarChart = () => {
         label: "No of Enrollments / Month",
         // data: Object.values(course.report), // Real Data
         data: [5, 10, 30, 45, 14, 8, 30, 45, 23, 19, 70, 80],
-        backgroundColor: "#1f9bcf",
-        borderColor: "#1f9bcf",
+        backgroundColor: "#343a40",
+        borderColor: "#343a40",
         borderWidth: 3,
       },
     ],
   };
 
   return (
-    <div className="mt-5">
+    <div className="mt-3">
       <Bar data={data} />
     </div>
   );
