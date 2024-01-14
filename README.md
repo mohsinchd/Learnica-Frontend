@@ -19,8 +19,9 @@ Welcome to Learnica, a web application that enables students to buy courses and 
 - Clone the Project from the github repository.
 - Run npm install to install all the necessary dependencies.
 - Add .env file in the root directory of the project not in the src or not in any folder and Add an Environment Variable by the name of REACT_APP_API_URL = API_URL_PASTE_HERE.
-- If you haven't run the API. Then go to the backend repository [LEARNICA_BACKEND_REPO](https://github.com/mohsinchd/Learnica-Frontend) of the same project and clone the api and run as instructed in the Readme of that repository.
+- If you haven't run the API. Then go to the backend repository [LEARNICA_BACKEND_REPO](https://github.com/mohsinchd/Learnica-Backend) of the same project and clone the api and run as instructed in the Readme of that repository.
 
 ## Demo
 
-Check out the live demo of Learnica: [https://learnica.vercel.app/](https://learnica.vercel.app/)
+Check out the live demo of Learnica: [CHECK_DEMO](https://learnica-frontend.vercel.app/)
+
