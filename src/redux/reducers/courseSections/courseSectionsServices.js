@@ -45,10 +45,25 @@ const editSection = async (sectionData, token) => {
   return data;
 };
 
+const deleteSection = async (sectionData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.delete(
+    `${API_URL}/api/v1/section/${sectionData.courseId}/${sectionData.sectionId}`,
+    config
+  );
+
+  return data;
+};
+
 const courseSectionService = {
   createNewSection,
   getAllSections,
   editSection,
+  deleteSection,
 };
 
 export default courseSectionService;

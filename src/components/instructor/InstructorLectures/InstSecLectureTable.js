@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
 
-const InstSecLectureTable = ({ lectures, editLecture }) => {
+const InstSecLectureTable = ({ lectures, editLecture, deleteLecture }) => {
   return (
     <>
       {lectures.length === 0 ? (
@@ -19,9 +19,18 @@ const InstSecLectureTable = ({ lectures, editLecture }) => {
                 <td>
                   <Button
                     variant="success"
+                    size="sm"
                     onClick={() => editLecture(lecture._id, lecture.title)}
                   >
                     EDIT
+                  </Button>
+                  <Button
+                    variant="danger"
+                    className="ms-2"
+                    size="sm"
+                    onClick={() => deleteLecture(lecture._id)}
+                  >
+                    DELETE
                   </Button>
                 </td>
               </tr>

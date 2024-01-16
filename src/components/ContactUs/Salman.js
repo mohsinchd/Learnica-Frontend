@@ -25,7 +25,7 @@ const Salman = () => {
               style={{ maxWidth: "200px", maxHeight: "200px" }} // Adjust the image size here
             />
             <h2>Salman Talat</h2>
-            <p>Documentation</p>
+            <p>Documentation + Frontend Design</p>
           </Col>
         </Row>
         <Row>
@@ -34,10 +34,10 @@ const Salman = () => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header>About Me </Accordion.Header>
                 <Accordion.Body>
-                  I'm Shahzaib Sarwar, a skilled frontend engineer with a
-                  passion for crafting user-friendly web applications. With
-                  extensive experience, I've contributed to projects like
-                  Learnica, showcasing my expertise in frontend development.
+                  I'm Salman Talat, a skilled frontend engineer with a passion
+                  for crafting user-friendly web applications. With extensive
+                  experience, I've contributed to projects like Learnica,
+                  showcasing my expertise in frontend development.
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
@@ -130,7 +130,10 @@ const Salman = () => {
                     whenever you'd like!"
                   </p>
                   <p>
-                    <MdOutgoingMail size={25} /> salman773@gmail.com
+                    <MdOutgoingMail size={25} />{" "}
+                    <a href="mailto:sulmantalat@gmail.com" target="_blank">
+                      Email Me
+                    </a>
                   </p>
                   <p>
                     <BiLogoWhatsappSquare size={25} /> 03002589587

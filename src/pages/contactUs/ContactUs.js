@@ -38,9 +38,9 @@ const ContactUs = ({ aboutProfile }) => {
                 style={{ height: "265px" }}
               />
               <Card.Body className="text-center">
-                <Card.Title>SHAHZAIB SARWAR</Card.Title>
+                <Card.Title>Shahzaib Sarwar</Card.Title>
                 <Card.Text>
-                  <p>Frontened Enginner </p>
+                  <p>Frontend Engineer @ Zapta Technologies</p>
                 </Card.Text>
                 <Link to="/shahzaib">
                   <Button variant="outline-success">About Me</Button>
@@ -57,7 +57,7 @@ const ContactUs = ({ aboutProfile }) => {
               <Card.Body className="text-center">
                 <Card.Title>Salman Talat</Card.Title>
                 <Card.Text>
-                  <p>Documentary</p>
+                  <p>Documentation + Frontend Design</p>
                 </Card.Text>
                 <Link to="/salman">
                   <Button variant="outline-success">About Me</Button>
@@ -72,9 +72,9 @@ const ContactUs = ({ aboutProfile }) => {
                 style={{ height: "265px" }}
               />
               <Card.Body className="text-center">
-                <Card.Title>Mohsin shoaib</Card.Title>
+                <Card.Title>Mohsin Shoaib</Card.Title>
                 <Card.Text>
-                  <p>Backend Engineer</p>
+                  <p>Full-Stack Engineer @ Cogent Labs</p>
                 </Card.Text>
                 <Link to="/Mohsin">
                   <Button variant="outline-success">About Me</Button>
