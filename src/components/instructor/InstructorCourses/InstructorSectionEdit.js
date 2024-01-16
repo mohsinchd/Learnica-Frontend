@@ -92,9 +92,9 @@ const InstructorSectionEdit = () => {
             <Col md={2}>
               <InstructorOffCanvas />
             </Col>
-            <Col md={10} className="  autoWidth shadow p-5">
+            <Col md={10} className="  autoWidth p-5">
               <Form onSubmit={submitFormHandler} className="">
-                <h2 className="text-center mb-4">Edit Your Course Here !</h2>
+                <h2 className="text-center mb-4">Edit Your Course!</h2>
                 <Form.Group controlId="title" className="mb-4">
                   <Form.Label>Course Title</Form.Label>
                   <Form.Control

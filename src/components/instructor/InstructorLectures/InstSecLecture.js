@@ -13,6 +13,7 @@ import {
   reset,
   getLectures,
   editLectureThunk,
+  deleteLectureThunk,
 } from "../../../redux/reducers/courseLectures/courseLecturesSlice";
 
 const InstSecLecture = () => {
@@ -98,6 +99,17 @@ const InstSecLecture = () => {
     setVideo("");
   };
 
+  const deleteLectureHandler = (lectureId) => {
+    let data = {
+      ids: {
+        courseId,
+        sectionId,
+        lectureId,
+      },
+    };
+    dispatch(deleteLectureThunk(data));
+  };
+
   useEffect(() => {
     if (isSuccess && successMessage) {
       toast.success(successMessage);
@@ -124,6 +136,7 @@ const InstSecLecture = () => {
               <InstSecLectureTable
                 lectures={lectures}
                 editLecture={editLectureHandler}
+                deleteLecture={deleteLectureHandler}
               />
             )}
           </Col>

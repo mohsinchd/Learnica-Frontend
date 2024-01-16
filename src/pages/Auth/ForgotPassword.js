@@ -40,7 +40,7 @@ const ForgotPassword = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Container className="w-50 lh-lg shadow p-5 rounded">
+        <Container className="w-50 lh-lg  p-5 rounded">
           <Row>
             <Col className="text-center">
               <h2> Forgot PASSWRORD</h2>

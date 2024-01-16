@@ -5,7 +5,12 @@ import { BsThreeDots } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { deleteSection } from "../../../redux/reducers/courseSections/courseSectionsSlice";
+
 const InstCourseSectionTable = ({ sections, courseId, editSection }) => {
+  const dispatch = useDispatch();
+
   const editSectionTitle = (id, title) => {
     editSection(id, title);
   };
@@ -48,7 +53,18 @@ const InstCourseSectionTable = ({ sections, courseId, editSection }) => {
                       >
                         Edit Section
                       </Dropdown.Item>
-                      <Dropdown.Item>Delete section</Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={() =>
+                          dispatch(
+                            deleteSection({
+                              courseId: courseId,
+                              sectionId: section._id,
+                            })
+                          )
+                        }
+                      >
+                        Delete section
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>

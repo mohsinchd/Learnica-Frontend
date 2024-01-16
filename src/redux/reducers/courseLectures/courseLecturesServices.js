@@ -45,10 +45,25 @@ const editLecture = async (lectureData, ids, token) => {
   return data;
 };
 
+const deleteLecture = async (ids, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.delete(
+    `${API_URL}/api/v1/section/${ids.courseId}/${ids.sectionId}/${ids.lectureId}`,
+    config
+  );
+
+  return data;
+};
+
 const courseLectureService = {
   createNewLecture,
   getAllLectures,
   editLecture,
+  deleteLecture,
 };
 
 export default courseLectureService;

@@ -24,8 +24,8 @@ const Mohsin = () => {
               className="img-fluid rounded-circle"
               style={{ maxWidth: "200px", maxHeight: "200px" }} // Adjust the image size here
             />
-            <h2>Mohsin shoaib</h2>
-            <p>Backend Software Engineer</p>
+            <h2>Mohsin Shoaib</h2>
+            <p>Full-Stack Engineer @ Cogent Labs</p>
           </Col>
         </Row>
         <Row>
@@ -44,6 +44,15 @@ const Mohsin = () => {
                 <Accordion.Header>My Exprtise </Accordion.Header>
                 <Accordion.Body>
                   <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Javascript</li>
+                    <li>React-Js </li>
+                    <li>React-Bootstrap</li>
+                    <li>React-Router</li>
+                    <li>Redux</li>
+                    <li>Redux-toolkit</li>
+                    <li>axios</li>
                     <li>Node-js</li>
                     <li>Express-js</li>
                     <li>Javascript</li>
@@ -120,7 +129,7 @@ const Mohsin = () => {
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="6">
-                <Accordion.Header>How You Can Contact Me ? </Accordion.Header>
+                <Accordion.Header>How You Can Contact Me? </Accordion.Header>
                 <Accordion.Body>
                   <p>
                     "Feel free to reach out to me anytime for discussions or
@@ -128,7 +137,10 @@ const Mohsin = () => {
                     whenever you'd like!"
                   </p>
                   <p>
-                    <MdOutgoingMail size={25} /> Mohsin77754@gmail.com
+                    <MdOutgoingMail size={25} />{" "}
+                    <a href="mailto:mohsinshoaib735@gmail.com" target="_blank">
+                      Email Me
+                    </a>
                   </p>
                   <p>
                     <BiLogoWhatsappSquare size={25} /> 03082515258

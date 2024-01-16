@@ -25,7 +25,7 @@ const Shahzaib = () => {
               style={{ maxWidth: "200px", maxHeight: "200px" }} // Adjust the image size here
             />
             <h2>Shahzaib Sarwar</h2>
-            <p>Frontend Software Engineer</p>
+            <p>Frontend Engineer @ Zapta Technologies</p>
           </Col>
         </Row>
         <Row>
@@ -130,7 +130,10 @@ const Shahzaib = () => {
                     whenever you'd like!"
                   </p>
                   <p>
-                    <MdOutgoingMail size={25} /> shahzaib6915@gmail.com
+                    <MdOutgoingMail size={25} />{" "}
+                    <a href="mailto:shahzaib6915@gmail.com" target="_blank">
+                      Email Me
+                    </a>
                   </p>
                   <p>
                     <BiLogoWhatsappSquare size={25} /> 03001112986

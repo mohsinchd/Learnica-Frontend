@@ -10,6 +10,7 @@ import {
   createSection,
   editSection,
   getSections,
+  deleteSection,
   reset,
 } from "../../../redux/reducers/courseSections/courseSectionsSlice";
 
@@ -44,6 +45,10 @@ const InstCourseSection = () => {
   const editTitleHanlder = (id, title) => {
     setTitle(title);
     setEdit(true);
+    setSectionId(id);
+  };
+
+  const sectionDeleteHandler = (id) => {
     setSectionId(id);
   };
 
@@ -99,6 +104,7 @@ const InstCourseSection = () => {
               sections={sections}
               courseId={id}
               editSection={editTitleHanlder}
+              deleteSection={sectionDeleteHandler}
             />
           )}
         </div>
